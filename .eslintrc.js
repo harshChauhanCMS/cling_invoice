@@ -30,5 +30,6 @@ module.exports = {
     semi: ['error', 'always'],
     quotes: ['error', 'single'],
     'object-shorthand': 0,
+    'no-underscore-dangle': 0,
   },
 };
