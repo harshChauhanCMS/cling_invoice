@@ -31,5 +31,6 @@ module.exports = {
     quotes: ['error', 'single'],
     'object-shorthand': 0,
     'no-underscore-dangle': 0,
+    'consistent-return': 0,
   },
 };
