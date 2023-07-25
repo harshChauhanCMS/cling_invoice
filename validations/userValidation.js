@@ -10,6 +10,10 @@ const userValidation = {
     emergency_contacts: Joi.array().items(Joi.string()),
     fcm_token: Joi.string(),
   }),
+  Notify: Joi.object().keys({
+    user_id: Joi.string().required(),
+    sticker_id: Joi.string().required(),
+  }),
 };
 
 module.exports = userValidation;
