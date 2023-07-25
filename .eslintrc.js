@@ -32,5 +32,7 @@ module.exports = {
     'object-shorthand': 0,
     'no-underscore-dangle': 0,
     'consistent-return': 0,
+    'no-else-return': 0,
+    'import/newline-after-import': 0,
   },
 };
