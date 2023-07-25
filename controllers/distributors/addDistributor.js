@@ -1,6 +1,6 @@
 const Distributors = require('../../model/distributorsModel');
-const distributorValidation = require('../../validations/distributorValidation');
 const { customErrorMessages } = require('../../utils/helpers');
+const distributorValidation = require('../../validations/distributorValidation');
 
 const addDistributor = async (req, res) => {
   try {
