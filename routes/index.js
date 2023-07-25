@@ -4,6 +4,7 @@ const usersRoute = require('./usersRoute');
 const authRoute = require('./authRoute');
 const stickerRoute = require('./stickerRoute');
 const userStickersRoute = require('./userStickersRoute');
+const distributorRoute = require('./distributorRoute');
 
 // Routes
 const moduleRoutes = [
@@ -22,6 +23,10 @@ const moduleRoutes = [
   {
     path: '/userStickers',
     route: userStickersRoute,
+  },
+  {
+    path: '/distributors',
+    route: distributorRoute,
   },
 ];
 
