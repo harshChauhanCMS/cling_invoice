@@ -5,8 +5,10 @@ const distributorValidation = {
     name: Joi.string().required(),
     phone_number: Joi.string().required(),
     address: Joi.string().required(),
-    latitude: Joi.string().required(),
-    longitude: Joi.string().required(),
+    location: Joi.object().keys({
+      latitude: Joi.number().required(),
+      longitude: Joi.number().required(),
+    }),
   }),
 };
 

@@ -7,7 +7,6 @@ const getAllUserStickers = async (req, res) => {
     await userStickersValidation.GetAll.validateAsync(req.body);
     const userStickers = await UserStickers.find({
       user_id: req.body.user_id,
-      is_deleted: false,
     });
     res.status(200).json({
       success: true,

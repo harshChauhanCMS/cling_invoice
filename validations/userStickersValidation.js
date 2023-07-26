@@ -16,7 +16,6 @@ const userStickersValidation = {
     vehicle_make: Joi.string(),
     vehicle_name: Joi.string(),
     vehicle_number: Joi.string(),
-    is_deleted: Joi.boolean(),
   }),
 };
 

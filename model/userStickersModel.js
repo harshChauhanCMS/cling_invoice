@@ -8,7 +8,6 @@ const userStickersSchema = new Schema(
     vehicle_number: { type: String },
     vehicle_make: { type: String },
     vehicle_name: { type: String },
-    is_deleted: { type: Boolean, default: false },
   },
   {
     timestamps: true,
