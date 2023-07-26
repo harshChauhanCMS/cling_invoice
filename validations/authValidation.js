@@ -5,6 +5,9 @@ const authValidation = {
     phone_number: Joi.string().required(),
     country_code: Joi.string(),
   }),
+  VerifyToken: Joi.object().keys({
+    token: Joi.string().required(),
+  }),
 };
 
 module.exports = authValidation;
