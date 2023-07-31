@@ -16,6 +16,7 @@ const router = require('./routes');
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
 const authMiddleware = require('./middleware/authMiddleware');
+const swaggerOptions = require('./utils/swagger');
 
 // Middleware
 app.use(cors());
@@ -37,27 +38,8 @@ app.all('/api/v1/*', (req, res, next) => {
 
 // Routes
 app.use('/api/v1/', router);
-const swaggerOptions = {
-  swaggerDefinition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'Vahansetu API Documentation',
-      version: '1.0.0',
-      description: 'Documentation for my API',
-    },
-    components: {
-      securitySchemes: {
-        bearerAuth: {
-          type: 'http',
-          scheme: 'bearer',
-          bearFormat: 'JWT',
-        },
-      },
-    },
-    security: [{ bearerAuth: [] }],
-  },
-  apis: ['./routes/*.js', './index.js', './controllers/*.js'],
-};
+
+// Swagger
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 

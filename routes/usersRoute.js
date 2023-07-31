@@ -8,12 +8,14 @@ const updateUser = require('../controllers/users/updateUser');
 const notifyUser = require('../controllers/users/notifyUser');
 
 // Routes
+
 /**
  * @openapi
  * /api/v1/users/findOne:
  *   post:
  *     summary: Get a single user
  *     description: Retrieve a single user by ID.
+ *     tags: [Users]
  *     x-express-openapi-additional-middleware:
  *       - type: body
  *     requestBody:
@@ -36,8 +38,9 @@ router.post('/findOne', findOneUser);
  * @openapi
  * /api/v1/users/findAll:
  *   get:
- *     summary: Get a user
+ *     summary: Get all users
  *     description: Retrieve all users.
+ *     tags: [Users]
  *     headers: []
  *     responses:
  *       200:
@@ -51,6 +54,7 @@ router.get('/findAll', findAllUsers);
  *   patch:
  *     summary: Update a user
  *     description: Update a user by id.
+ *     tags: [Users]
  *     x-express-openapi-additional-middleware:
  *       - type: body
  *     requestBody:
@@ -89,6 +93,7 @@ router.patch('/updateUser', updateUser);
  *   post:
  *     summary: Notify user
  *     description: Notify user by id.
+ *     tags: [Users]
  *     x-express-openapi-additional-middleware:
  *       - type: body
  *     requestBody:
