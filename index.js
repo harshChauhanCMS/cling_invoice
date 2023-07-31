@@ -5,6 +5,7 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 8000;
 const mongoose = require('mongoose');
+const upload = require('express-fileupload');
 
 // Import routes
 const bodyParser = require('body-parser');
@@ -16,6 +17,7 @@ const authMiddleware = require('./middleware/authMiddleware');
 
 // Middleware
 app.use(cors());
+app.use(upload());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());

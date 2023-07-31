@@ -98,3 +98,30 @@ exports.customErrorMessages = (error) => {
     return error.message;
   }
 };
+
+exports.validateStickerArray = (array) => {
+  array.forEach((element, index) => {
+    if (!element.distributor_id) {
+      throw new Error(`distributor_id is required at row ${index + 1}`);
+    }
+    if (!element.status) {
+      throw new Error(`status is required at row ${index + 1}`);
+    }
+  });
+};
+
+exports.sanitizedStickerArray = (array) => {
+  const toReturn = [];
+  array.forEach((element) => {
+    const obj = {
+      distributor_id: element.distributor_id,
+      status: element.status,
+    };
+
+    const sticker = {
+      ...obj,
+    };
+    toReturn.push(sticker);
+  });
+  return toReturn;
+};

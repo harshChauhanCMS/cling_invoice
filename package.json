@@ -19,11 +19,15 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
     "firebase-admin": "^11.10.1",
     "jsonwebtoken": "^9.0.1",
     "moment": "^2.29.4",
     "mongoose": "^7.2.4",
-    "nodemon": "^2.0.21"
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-sequence": "^5.3.1",
+    "nodemon": "^2.0.21",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "eslint": "^8.45.0",
