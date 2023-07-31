@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
     "start-dev": "nodemon index.js",
-    "lint": "eslint . --ext .js"
+    "lint": "eslint . --ext .js",
+    "prepare": "husky install || true"
   },
   "keywords": [],
   "author": "",
@@ -24,8 +25,6 @@
     "jsonwebtoken": "^9.0.1",
     "moment": "^2.29.4",
     "mongoose": "^7.2.4",
-    "mongoose-auto-increment": "^5.0.1",
-    "mongoose-sequence": "^5.3.1",
     "nodemon": "^2.0.21",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
