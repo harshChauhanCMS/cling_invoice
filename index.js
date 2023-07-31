@@ -45,16 +45,16 @@ const swaggerOptions = {
       version: '1.0.0',
       description: 'Documentation for my API',
     },
-    // components: {
-    //   securitySchemes: {
-    //     bearerAuth: {
-    //       type: 'http',
-    //       scheme: 'bearer',
-    //       bearFormat: 'JWT',
-    //     },
-    //   },
-    // },
-    // security: [{ bearerAuth: [] }],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearFormat: 'JWT',
+        },
+      },
+    },
+    security: [{ bearerAuth: [] }],
   },
   apis: ['./routes/*.js', './index.js', './controllers/*.js'],
 };
@@ -62,16 +62,6 @@ const swaggerSpec = swaggerJsdoc(swaggerOptions);
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Testing
-/**
- * @swagger
- * /:
- *   get:
- *     summary: Get a user
- *     description: Retrieve a user from the database.
- *     responses:
- *       200:
- *         description: A user object
- */
 app.get('/', async (req, res) => {
   res.send('Working successfully!!');
 });
