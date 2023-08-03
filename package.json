@@ -8,7 +8,8 @@
     "start": "nodemon index.js",
     "start-dev": "nodemon index.js",
     "lint": "eslint . --ext .js",
-    "prepare": "husky install || true"
+    "prepare": "husky install || true",
+    "fix": "eslint . --ext .js --fix"
   },
   "keywords": [],
   "author": "",
