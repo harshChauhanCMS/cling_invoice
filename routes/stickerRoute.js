@@ -5,6 +5,7 @@ const router = express.Router();
 const addSticker = require('../controllers/stickers/addSticker');
 const massUpload = require('../controllers/stickers/massUpload');
 const massUpdate = require('../controllers/stickers/massUpdate');
+const { generateSticker } = require('../controllers/stickers/generateStickers');
 
 // Routes
 
@@ -89,5 +90,7 @@ router.post('/massUpload', massUpload);
  */
 
 router.patch('/massUpdate', massUpdate);
+
+router.get('/generate', generateSticker);
 
 module.exports = router;

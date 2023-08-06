@@ -15,7 +15,7 @@ const stickersSchema = new Schema(
     timestamps: true,
   }
 );
-stickersSchema.pre('validate', async function (next) {
+stickersSchema.pre('validate', async (next) => {
   const sticker = this;
   if (sticker.isNew) {
     const lastDocument = await Stickers.findOne({}, {}, { sort: { _id: -1 } })
@@ -31,7 +31,7 @@ stickersSchema.pre('save', async (next) => {
   next();
 });
 
-stickersSchema.pre('findOneAndUpdate', function (next) {
+stickersSchema.pre('findOneAndUpdate', (next) => {
   // Check if the document is being upserted (new document creation)
   if (this._update.$setOnInsert && !this._update.$setOnInsert._id) {
     // Find the highest _id value in the collection and increment it by one
