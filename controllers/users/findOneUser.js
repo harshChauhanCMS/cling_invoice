@@ -3,8 +3,8 @@ const { customErrorMessages } = require('../../utils/helpers');
 
 const findOneUser = async (req, res) => {
   try {
-    const { id } = req.body;
-    const user = await Users.findById(id);
+    const { _id } = req.query;
+    const user = await Users.findById(_id);
     res.status(200).json({
       success: true,
       message: 'User details fetched successfully',

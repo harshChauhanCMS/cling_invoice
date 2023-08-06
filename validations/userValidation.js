@@ -11,8 +11,7 @@ const userValidation = {
     fcm_token: Joi.string(),
   }),
   Notify: Joi.object().keys({
-    user_id: Joi.string().required(),
-    sticker_id: Joi.string().required(),
+    sticker_id: Joi.number().required(),
   }),
 };
 

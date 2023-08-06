@@ -1,14 +1,14 @@
-const Stickers = require('../../model/stickersModel');
+const UserSticker = require('../../model/userStickersModel');
 const Users = require('../../model/usersModel');
 const { customErrorMessages } = require('../../utils/helpers');
-const sendPushNotification = require('../../utils/sendPushNotification');
+const { sendPushNotification } = require('../../utils/sendPushNotification');
 const userValidation = require('../../validations/userValidation');
 
 const notifyUser = async (req, res) => {
   try {
     await userValidation.Notify.validateAsync(req.body);
     const { stiker_id } = req.body;
-    const stiker = await Stickers.findOne({ stiker_id });
+    const stiker = await UserSticker.findOne({ stiker_id });
     if (stiker) {
       const user = await Users.findById(stiker?.user_id);
       const response = await sendPushNotification({
@@ -16,10 +16,17 @@ const notifyUser = async (req, res) => {
         body: 'You have a new notification',
         token: user?.fcm_token,
       });
-      res.status(200).json({
-        success: true,
-        message: response.message,
-      });
+      if (response) {
+        res.status(200).json({
+          success: true,
+          message: response.message,
+        });
+      } else {
+        res.status(500).json({
+          success: false,
+          message: 'Error while sending notification to user',
+        });
+      }
     } else {
       res.status(404).json({
         success: false,

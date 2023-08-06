@@ -3,11 +3,16 @@ const { Schema } = mongoose;
 
 const userStickersSchema = new Schema(
   {
-    sticker_id: { type: String, required: true },
+    sticker_id: { type: Number, required: true },
     user_id: { type: String, required: true },
     vehicle_number: { type: String },
     vehicle_make: { type: String },
     vehicle_name: { type: String },
+    status: {
+      type: String,
+      enum: ['active', 'deleted'],
+      default: 'active',
+    },
   },
   {
     timestamps: true,

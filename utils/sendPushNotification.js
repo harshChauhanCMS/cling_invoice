@@ -7,7 +7,7 @@ admin.initializeApp({
 
 const sendPushNotification = async ({ title, body, token }) => {
   try {
-    const res = admin
+    const res = await admin
       .messaging()
       .send({
         notification: {
@@ -16,12 +16,21 @@ const sendPushNotification = async ({ title, body, token }) => {
         },
         token,
       })
-      .then((response) => response)
-      .catch((error) => error);
+      .then(() => true)
+      .catch(() => false);
     return res;
   } catch (error) {
     return false;
   }
 };
 
-module.exports = sendPushNotification;
+const verfiyToken = async (token) => {
+  try {
+    const res = await admin.auth().getUserByProviderUid(token);
+    return res;
+  } catch (error) {
+    return false;
+  }
+};
+
+module.exports = { sendPushNotification, verfiyToken };

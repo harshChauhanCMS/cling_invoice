@@ -31,7 +31,7 @@ const updateUserSticker = require('../controllers/userStickers/updateUserSticker
  *       200:
  *         description: All User Stickers Object
  */
-router.post('/getUserStickers', getAllUserStickers);
+router.get('/getUserStickers', getAllUserStickers);
 
 /**
  * @openapi
@@ -93,6 +93,6 @@ router.post('/addUserSticker', addUserSticker);
  *       '200':
  *         description: User Sticker Object
  */
-router.patch('/updateUserSticker', updateUserSticker);
+router.post('/updateUserSticker', updateUserSticker);
 
 module.exports = router;

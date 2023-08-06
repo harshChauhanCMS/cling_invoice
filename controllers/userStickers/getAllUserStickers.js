@@ -1,12 +1,19 @@
 const UserStickers = require('../../model/userStickersModel');
 const { customErrorMessages } = require('../../utils/helpers');
-const userStickersValidation = require('../../validations/userStickersValidation');
+// const userStickersValidation = require('../../validations/userStickersValidation');
 
 const getAllUserStickers = async (req, res) => {
   try {
-    await userStickersValidation.GetAll.validateAsync(req.body);
+    // await userStickersValidation.GetAll.validateAsync(req.body);
+    const { user_id } = req.query;
+    if (!user_id) {
+      return res.status(400).json({
+        success: false,
+        message: 'User id is required',
+      });
+    }
     const userStickers = await UserStickers.find({
-      user_id: req.body.user_id,
+      user_id: user_id,
     });
     res.status(200).json({
       success: true,

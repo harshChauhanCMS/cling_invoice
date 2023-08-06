@@ -27,7 +27,12 @@ app.use(express.json());
 
 // Auth middleware
 app.all('/api/v1/*', (req, res, next) => {
-  const publicRoutes = ['auth/login', 'auth/verifyToken'];
+  const publicRoutes = [
+    'auth/login',
+    'auth/verifyToken',
+    'stickers/addSticker',
+    'users/notifyUser',
+  ];
   const path = req.path.split('/v1/')[1];
   if (publicRoutes.includes(path)) {
     return next();

@@ -12,7 +12,7 @@ const notifyUser = require('../controllers/users/notifyUser');
 /**
  * @openapi
  * /api/v1/users/findOne:
- *   post:
+ *   get:
  *     summary: Get a single user
  *     description: Retrieve a single user by ID.
  *     tags: [Users]
@@ -32,7 +32,7 @@ const notifyUser = require('../controllers/users/notifyUser');
  *       200:
  *         description: Single user object.
  */
-router.post('/findOne', findOneUser);
+router.get('/findOne', findOneUser);
 
 /**
  * @openapi
@@ -85,7 +85,7 @@ router.get('/findAll', findAllUsers);
  *       200:
  *         description: User updated object.
  */
-router.patch('/updateUser', updateUser);
+router.post('/updateUser', updateUser);
 
 /**
  * @openapi

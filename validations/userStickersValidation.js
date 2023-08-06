@@ -6,7 +6,7 @@ const userStickersValidation = {
   }),
   Create: Joi.object().keys({
     user_id: Joi.string().required(),
-    sticker_id: Joi.string().required(),
+    sticker_id: Joi.number().required(),
     vehicle_number: Joi.string(),
     vehicle_make: Joi.string(),
     vehicle_name: Joi.string(),
