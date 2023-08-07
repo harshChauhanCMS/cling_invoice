@@ -12,6 +12,7 @@ const userValidation = {
   }),
   Notify: Joi.object().keys({
     sticker_id: Joi.number().required(),
+    reason: Joi.string(),
   }),
 };
 
