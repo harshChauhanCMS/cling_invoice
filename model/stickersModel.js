@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const stickersSchema = new Schema(
   {
     _id: { type: Number, required: true, unique: true },
-    distributor_id: { type: String, required: true },
+    distributor_id: { type: String },
     status: {
       type: String,
       enum: ['created', 'active'],
@@ -16,15 +16,19 @@ const stickersSchema = new Schema(
   }
 );
 stickersSchema.pre('validate', async (next) => {
-  const sticker = this;
-  if (sticker.isNew) {
-    const lastDocument = await Stickers.findOne({}, {}, { sort: { _id: -1 } })
-      .lean()
-      .exec();
-    const count = lastDocument ? lastDocument._id : 0;
-    sticker._id = count + 1;
+  try {
+    const sticker = this;
+    if (sticker.isNew && !sticker._id) {
+      const lastDocument = await Stickers.findOne({}, {}, { sort: { _id: -1 } })
+        .lean()
+        .exec();
+      const count = lastDocument ? lastDocument._id : 0;
+      sticker._id = count + 1;
+    }
+    next();
+  } catch (error) {
+    next(error);
   }
-  next();
 });
 
 stickersSchema.pre('save', async (next) => {

@@ -18,6 +18,9 @@ const errorHandler = require('./middleware/errorHandler');
 const authMiddleware = require('./middleware/authMiddleware');
 const swaggerOptions = require('./utils/swagger');
 
+// Static files
+app.use(express.static('public'));
+
 // Middleware
 app.use(cors());
 app.use(upload());

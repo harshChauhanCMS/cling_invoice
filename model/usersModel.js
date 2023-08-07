@@ -10,8 +10,14 @@ const usersSchema = new Schema(
     phone_number: { type: String, required: true },
     country_code: { type: String, default: '+91' },
     blood_group: { type: String },
-    emergency_contacts: [{ type: String }],
+    emergency_contacts: [
+      {
+        relation: { type: String },
+        phone_number: { type: String },
+      },
+    ],
     fcm_token: { type: String },
+    gender: { type: String, enum: ['Male', 'Female', 'Other'] },
   },
   {
     timestamps: true,
