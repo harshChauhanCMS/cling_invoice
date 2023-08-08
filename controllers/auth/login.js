@@ -48,6 +48,7 @@ const login = async (req, res) => {
         success: true,
         token: jwtToken,
         refreshToken,
+        user: newUser,
       });
     }
 

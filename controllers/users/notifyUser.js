@@ -7,8 +7,8 @@ const userValidation = require('../../validations/userValidation');
 const notifyUser = async (req, res) => {
   try {
     await userValidation.Notify.validateAsync(req.body);
-    const { stiker_id, reason } = req.body;
-    const stiker = await UserSticker.findOne({ stiker_id });
+    const { sticker_id, reason } = req.body;
+    const stiker = await UserSticker.findOne({ sticker_id });
 
     if (stiker?.status === 'deleted') {
       res.status(400).json({
@@ -19,6 +19,7 @@ const notifyUser = async (req, res) => {
 
     if (stiker) {
       const user = await Users.findById(stiker?.user_id);
+      console.log(user);
       const response = await sendPushNotification({
         title: reason || 'Someone is at your vehicle',
         body: 'You have a new notification',

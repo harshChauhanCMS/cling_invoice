@@ -7,6 +7,7 @@ exports.generateSticker = async (req, res) => {
   try {
     const { from, to } = req.query;
     const qrcodes = [];
+    const stickerToCreate = [];
     for (let i = parseInt(from); i <= parseInt(to); i++) {
       const data = {
         sticker_id: i,
@@ -38,11 +39,12 @@ exports.generateSticker = async (req, res) => {
         html: qrTemplete(i),
         selector: '.qr-code',
       });
-      await sticker.create({
+      stickerToCreate.push({
         _id: i,
         status: 'created',
       });
     }
+    await sticker.insertMany(stickerToCreate);
 
     res.status(200).json({ qrcodes });
   } catch (error) {

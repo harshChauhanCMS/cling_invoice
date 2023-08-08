@@ -37,7 +37,11 @@ stickersSchema.pre('save', async (next) => {
 
 stickersSchema.pre('findOneAndUpdate', (next) => {
   // Check if the document is being upserted (new document creation)
-  if (this._update.$setOnInsert && !this._update.$setOnInsert._id) {
+  if (
+    this.update &&
+    this._update.$setOnInsert &&
+    !this._update.$setOnInsert._id
+  ) {
     // Find the highest _id value in the collection and increment it by one
     this.model
       .findOne({}, {}, { sort: { _id: -1 } })

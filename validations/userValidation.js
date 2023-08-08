@@ -7,8 +7,15 @@ const userValidation = {
     email: Joi.string().email(),
     country_code: Joi.string(),
     blood_group: Joi.string(),
-    emergency_contacts: Joi.array().items(Joi.string()),
+    emergency_contacts: Joi.array().items(
+      Joi.object().keys({
+        relation: Joi.string(),
+        phone_number: Joi.string(),
+      })
+    ),
+
     fcm_token: Joi.string(),
+    gender: Joi.string(),
   }),
   Notify: Joi.object().keys({
     sticker_id: Joi.number().required(),
