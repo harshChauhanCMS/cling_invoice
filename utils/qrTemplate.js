@@ -43,10 +43,19 @@ const qrTemplete = (imageNumber) => {
                   justify-content: end;
                   align-items: center;
               }
+              .text {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: "center;
+                    align-items: center;
+                    margin-bottom: 20px;
+                }
           </style>
       </head>
       <body>
           <div class="container">
+                <h4># ${imageNumber}</h4>
               <div class="qr-code">
                   <img src="http://localhost:8000/${imageNumber}.jpg" alt="QR Code">
               </div> 

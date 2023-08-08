@@ -37,13 +37,14 @@ exports.generateSticker = async (req, res) => {
       await htmltoimage({
         output: `./qrOutputs/${i}.jpg`,
         html: qrTemplete(i),
-        selector: '.qr-code',
+        selector: '.container',
       });
       stickerToCreate.push({
         _id: i,
         status: 'created',
       });
     }
+
     await sticker.insertMany(stickerToCreate);
 
     res.status(200).json({ qrcodes });
