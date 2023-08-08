@@ -19,7 +19,6 @@ const notifyUser = async (req, res) => {
 
     if (stiker) {
       const user = await Users.findById(stiker?.user_id);
-      console.log(user);
       const response = await sendPushNotification({
         title: reason || 'Someone is at your vehicle',
         body: 'You have a new notification',
