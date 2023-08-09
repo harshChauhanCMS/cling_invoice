@@ -5,6 +5,9 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 8000;
 const mongoose = require('mongoose');
+const upload = require('express-fileupload');
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 // Import routes
 const bodyParser = require('body-parser');
@@ -13,16 +16,27 @@ const router = require('./routes');
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
 const authMiddleware = require('./middleware/authMiddleware');
+const swaggerOptions = require('./utils/swagger');
+
+// Static files
+app.use(express.static('public'));
 
 // Middleware
 app.use(cors());
+app.use(upload());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
 
 // Auth middleware
 app.all('/api/v1/*', (req, res, next) => {
-  const publicRoutes = ['auth/login'];
+  const publicRoutes = [
+    'auth/login',
+    'auth/verifyToken',
+    'stickers/addSticker',
+    'users/notifyUser',
+    'stickers/generate',
+  ];
   const path = req.path.split('/v1/')[1];
   if (publicRoutes.includes(path)) {
     return next();
@@ -33,6 +47,10 @@ app.all('/api/v1/*', (req, res, next) => {
 
 // Routes
 app.use('/api/v1/', router);
+
+// Swagger
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Testing
 app.get('/', async (req, res) => {

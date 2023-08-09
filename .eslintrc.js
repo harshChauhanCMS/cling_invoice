@@ -34,5 +34,9 @@ module.exports = {
     'consistent-return': 0,
     'no-else-return': 0,
     'import/newline-after-import': 0,
+    'no-use-before-define': 'off',
+    'no-plusplus': 'off',
+    'no-await-in-loop': 'off',
+    radix: 'off',
   },
 };

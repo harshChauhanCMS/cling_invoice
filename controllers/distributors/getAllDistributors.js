@@ -1,14 +1,13 @@
-const Users = require('../../model/usersModel');
+const Distributors = require('../../model/distributorsModel');
 const { customErrorMessages } = require('../../utils/helpers');
 
-const findOneUser = async (req, res) => {
+const getAllDistributors = async (req, res) => {
   try {
-    const { _id } = req.query;
-    const user = await Users.findById(_id);
+    const distributor = await Distributors.find();
     res.status(200).json({
       success: true,
-      message: 'User details fetched successfully',
-      data: user,
+      message: 'Distributor fetched successfully',
+      data: distributor,
     });
   } catch (error) {
     const message = customErrorMessages(error);
@@ -17,4 +16,4 @@ const findOneUser = async (req, res) => {
   }
 };
 
-module.exports = findOneUser;
+module.exports = getAllDistributors;

@@ -7,20 +7,6 @@ const addUserSticker = async (req, res) => {
   try {
     const data = req.body;
     await userStickersValidation.Create.validateAsync(data);
-
-    // Check if sticker is active
-    const stickerActive = await Stickers.findOne({
-      _id: data.sticker_id,
-      is_active: true,
-    });
-
-    if (stickerActive) {
-      return res.status(400).json({
-        success: false,
-        message: 'Sticker is already active',
-      });
-    }
-
     // Check if sticker already exists with the same user id
     const userStickerExists = await UserStickers.findOne({
       user_id: data.user_id,
@@ -30,11 +16,26 @@ const addUserSticker = async (req, res) => {
     if (userStickerExists) {
       return res.status(400).json({
         success: false,
-        message: 'User sticker already exists',
+        message: 'You already have this sticker',
       });
     }
+    // Check if sticker is active
+    const stickerActive = await Stickers.findOne({
+      _id: data.sticker_id,
+      status: 'active',
+    });
 
+    if (stickerActive) {
+      return res.status(400).json({
+        success: false,
+        message: 'Sticker is already active',
+      });
+    }
     const userStickers = await UserStickers.create(req.body);
+    await Stickers.findOneAndUpdate(
+      { _id: data.sticker_id },
+      { status: 'active' }
+    );
     res.status(200).json({
       success: true,
       message: 'User sticker created successfully',
