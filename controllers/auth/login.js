@@ -3,6 +3,7 @@ const moment = require('moment');
 const { customErrorMessages } = require('../../utils/helpers');
 const authValidation = require('../../validations/authValidation');
 const Users = require('../../model/usersModel');
+const sendMail = require('../../utils/sendMail');
 // const { verfiyToken } = require('../../utils/sendPushNotification');
 
 const login = async (req, res) => {
@@ -60,6 +61,13 @@ const login = async (req, res) => {
       { _id: user?._id, phone_number: user?.phone_number },
       process.env.JWT_SECRET
     );
+    if (user?.email) {
+      sendMail({
+        to: user?.email,
+        subject: 'Login Successful',
+        message: 'You have successfully logged in to your account',
+      });
+    }
 
     return res.status(200).json({
       message: 'Login Successful',

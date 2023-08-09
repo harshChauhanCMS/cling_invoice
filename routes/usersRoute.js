@@ -103,11 +103,11 @@ router.post('/updateUser', updateUser);
  *           schema:
  *             type: object
  *             properties:
- *               user_id:
+ *               reason:
  *                 type: string
- *                 description: ID of the user.
+ *                 description: Reason.
  *               sticker_id:
- *                 type: string
+ *                 type: integer
  *                 description: ID of the sticker
  *     responses:
  *       200:

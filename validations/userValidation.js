@@ -16,6 +16,10 @@ const userValidation = {
 
     fcm_token: Joi.string(),
     gender: Joi.string(),
+    notification_preferences: Joi.object().keys({
+      sound_type: Joi.string().valid('long', 'short'),
+      allowed: Joi.boolean(),
+    }),
   }),
   Notify: Joi.object().keys({
     sticker_id: Joi.number().required(),

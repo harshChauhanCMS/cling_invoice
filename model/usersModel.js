@@ -18,6 +18,10 @@ const usersSchema = new Schema(
     ],
     fcm_token: { type: String },
     gender: { type: String, enum: ['Male', 'Female', 'Other'] },
+    notification_preferences: {
+      sound_type: { type: String, enum: ['long', 'short'] },
+      allowed: { type: Boolean, default: true },
+    },
   },
   {
     timestamps: true,

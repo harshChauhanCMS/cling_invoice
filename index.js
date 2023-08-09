@@ -18,6 +18,7 @@ const router = require('./routes');
 const errorHandler = require('./middleware/errorHandler');
 const authMiddleware = require('./middleware/authMiddleware');
 const swaggerOptions = require('./utils/swagger');
+const sendReminder = require('./controllers/cron/sendReminder');
 
 // Static files
 app.use(express.static('public'));
@@ -83,6 +84,6 @@ async function main() {
 }
 main();
 
-cron.schedule('58 12 * * *', () => {
-  console.log('Hello world');
+cron.schedule('0 10 * * *', () => {
+  sendReminder();
 });

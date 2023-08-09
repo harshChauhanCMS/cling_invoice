@@ -5,7 +5,7 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
-const sendPushNotification = async ({ title, body, token }) => {
+const sendPushNotification = async ({ title, body, token, sound_type }) => {
   try {
     const res = await admin
       .messaging()
@@ -15,6 +15,11 @@ const sendPushNotification = async ({ title, body, token }) => {
           body,
         },
         token,
+        android: {
+          notification: {
+            channelId: sound_type,
+          },
+        },
       })
       .then(() => true)
       .catch(() => false);
