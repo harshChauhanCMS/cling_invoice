@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 const AWS = require('aws-sdk');
 
 const ses = new AWS.SES({
