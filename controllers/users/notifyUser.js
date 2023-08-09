@@ -1,6 +1,7 @@
 const UserSticker = require('../../model/userStickersModel');
 const Users = require('../../model/usersModel');
 const { customErrorMessages } = require('../../utils/helpers');
+const sendMail = require('../../utils/sendMail');
 const { sendPushNotification } = require('../../utils/sendPushNotification');
 const userValidation = require('../../validations/userValidation');
 
@@ -19,21 +20,38 @@ const notifyUser = async (req, res) => {
 
     if (sticker) {
       const user = await Users.findById(sticker?.user_id);
-      const response = await sendPushNotification({
-        title: reason || 'Someone is at your vehicle',
-        body: 'You have a new notification',
-        token: user?.fcm_token,
-        sound_type: user?.notification_references?.sound_type || 'short',
-      });
-      if (response) {
-        res.status(200).json({
-          success: true,
-          message: response.message,
+      if (
+        user?.notification_preferences &&
+        user?.notification_preferences.allowed
+      ) {
+        const response = await sendPushNotification({
+          title: reason || 'Someone is at your vehicle',
+          body: 'You have a new notification',
+          token: user?.fcm_token,
+          sound_type: user?.notification_preferences?.sound_type || 'short',
         });
+        if (user?.email) {
+          await sendMail({
+            to: user?.email,
+            subject: reason || 'Someone is at your vehicle',
+            message: 'You have a new notification',
+          });
+        }
+        if (response) {
+          res.status(200).json({
+            success: true,
+            message: response.message,
+          });
+        } else {
+          res.status(500).json({
+            success: false,
+            message: 'Unable to send notification',
+          });
+        }
       } else {
-        res.status(500).json({
+        res.status(400).json({
           success: false,
-          message: 'Unable to send notification',
+          message: 'Cannot send nottification to this user',
         });
       }
     } else {
