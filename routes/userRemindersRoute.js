@@ -41,7 +41,7 @@ const getUpcomingReminder = require('../controllers/userReminders/getUpcomingRem
  *       200:
  *         description: User Reminders Object
  */
-router.patch('/editUserReminders/:id', editUserReminders);
+router.put('/editUserReminders', editUserReminders);
 
 /**
  * @openapi

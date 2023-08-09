@@ -16,6 +16,7 @@ const userRemindersValidation = {
     user_id: Joi.string().required(),
   }),
   Update: Joi.object().keys({
+    id: Joi.string().required(),
     title: Joi.string(),
     expire_date: Joi.date(),
     reminder_date: Joi.date(),
