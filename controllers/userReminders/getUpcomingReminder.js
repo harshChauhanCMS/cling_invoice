@@ -9,7 +9,7 @@ const getUpcomingReminder = async (req, res) => {
     const currentDate = new Date();
     const upcomingReminders = await UserReminders.find({
       user_id: user_id,
-      reminder_date: { $gt: currentDate },
+      expire_date: { $gt: currentDate },
     });
 
     res.status(200).json({
