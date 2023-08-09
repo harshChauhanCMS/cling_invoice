@@ -33,9 +33,9 @@ const getUserReminders = require('../controllers/userReminders/getUserReminders'
  *               expire_date:
  *                 type: string
  *                 description: Expire date.
- *               days_before_expire:
- *                 type: number
- *                 description: Days before expire.
+ *               reminder_date:
+ *                 type: string
+ *                 description: Reminder date.
  *     responses:
  *       200:
  *         description: User Reminders Object
@@ -56,6 +56,9 @@ router.patch('/editUserReminders/:id', editUserReminders);
  *           schema:
  *             type: object
  *             properties:
+ *               user_id:
+ *                 type: string
+ *                 description: User ID.
  *               sticker_id:
  *                 type: string
  *                 description: Sticker id.
@@ -68,9 +71,9 @@ router.patch('/editUserReminders/:id', editUserReminders);
  *               expire_date:
  *                 type: string
  *                 description: Expire date.
- *               days_before_expire:
- *                 type: number
- *                 description: Days before expire.
+ *               reminder_date:
+ *                 type: string
+ *                 description: Reminder date.
  *     responses:
  *       200:
  *         description: User Reminders Object
