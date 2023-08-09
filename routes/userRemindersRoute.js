@@ -5,6 +5,7 @@ const router = express.Router();
 const addUserReminders = require('../controllers/userReminders/addUserReminders');
 const editUserReminders = require('../controllers/userReminders/editUserReminders');
 const getUserReminders = require('../controllers/userReminders/getUserReminders');
+const getUpcomingReminder = require('../controllers/userReminders/getUpcomingReminder');
 
 // Routes
 
@@ -102,5 +103,28 @@ router.post('/addUserReminders', addUserReminders);
  *         description: User Reminders Object
  */
 router.post('/getUserReminders', getUserReminders);
+
+/**
+ * @openapi
+ * /api/v1/userReminders/getUpcomingReminder:
+ *   post:
+ *     summary: Get Upcoming Reminders
+ *     description: Get Upcoming Reminders
+ *     tags: [UserReminders]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               user_id:
+ *                 type: string
+ *                 description: User id.
+ *     responses:
+ *       200:
+ *         description: Upcoming Reminders Object
+ */
+router.post('/getUpcomingReminder', getUpcomingReminder);
 
 module.exports = router;

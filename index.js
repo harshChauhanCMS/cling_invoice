@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const upload = require('express-fileupload');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const cron = require('node-cron');
 
 // Import routes
 const bodyParser = require('body-parser');
@@ -81,3 +82,7 @@ async function main() {
   }
 }
 main();
+
+cron.schedule('58 12 * * *', () => {
+  console.log('Hello world');
+});

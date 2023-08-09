@@ -12,6 +12,9 @@ const userRemindersValidation = {
   Get: Joi.object().keys({
     sticker_id: Joi.string().required(),
   }),
+  getUpcomingReminder: Joi.object().keys({
+    user_id: Joi.string().required(),
+  }),
   Update: Joi.object().keys({
     title: Joi.string(),
     expire_date: Joi.date(),
