@@ -8,21 +8,22 @@ const notifyUser = async (req, res) => {
   try {
     await userValidation.Notify.validateAsync(req.body);
     const { sticker_id, reason } = req.body;
-    const stiker = await UserSticker.findOne({ sticker_id });
+    const sticker = await UserSticker.findOne({ sticker_id });
 
-    if (stiker?.status === 'deleted') {
+    if (sticker?.status === 'deleted') {
       res.status(400).json({
         success: false,
         message: 'Sticker is not active',
       });
     }
 
-    if (stiker) {
-      const user = await Users.findById(stiker?.user_id);
+    if (sticker) {
+      const user = await Users.findById(sticker?.user_id);
       const response = await sendPushNotification({
         title: reason || 'Someone is at your vehicle',
         body: 'You have a new notification',
         token: user?.fcm_token,
+        sound_type: user?.notification_references?.sound_type || 'short',
       });
       if (response) {
         res.status(200).json({
