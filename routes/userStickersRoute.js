@@ -5,6 +5,7 @@ const router = express.Router();
 const getAllUserStickers = require('../controllers/userStickers/getAllUserStickers');
 const addUserSticker = require('../controllers/userStickers/addUserSticker');
 const updateUserSticker = require('../controllers/userStickers/updateUserSticker');
+const deleteUserSticker = require('../controllers/userStickers/deleteUserSticker');
 
 // Routes
 
@@ -94,5 +95,30 @@ router.post('/addUserSticker', addUserSticker);
  *         description: User Sticker Object
  */
 router.post('/updateUserSticker', updateUserSticker);
+
+/**
+ * @openapi
+ * /api/v1/userStickers/deleteUserSticker:
+ *   delete:
+ *     summary: Delete User Sticker
+ *     description: Delete a user sticker.
+ *     tags: [User Stickers]
+ *     x-express-openapi-additional-middleware:
+ *       - type: body
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               _id:
+ *                 type: string
+ *                 description: ID of the user sticker.
+ *     responses:
+ *       '200':
+ *         description: Deleted User Sticker Object
+ */
+router.delete('/deleteUserSticker', deleteUserSticker);
 
 module.exports = router;
