@@ -12,6 +12,9 @@ const userRemindersValidation = {
   Get: Joi.object().keys({
     sticker_id: Joi.string().required(),
   }),
+  Delete: Joi.object().keys({
+    _id: Joi.string().required(),
+  }),
   getUpcomingReminder: Joi.object().keys({
     user_id: Joi.string().required(),
   }),

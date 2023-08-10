@@ -25,6 +25,9 @@ const userValidation = {
     sticker_id: Joi.number().required(),
     reason: Joi.string(),
   }),
+  Search: Joi.object().keys({
+    vehicle_number: Joi.string().required(),
+  }),
 };
 
 module.exports = userValidation;

@@ -6,6 +6,7 @@ const findOneUser = require('../controllers/users/findOneUser');
 const findAllUsers = require('../controllers/users/findAllUsers');
 const updateUser = require('../controllers/users/updateUser');
 const notifyUser = require('../controllers/users/notifyUser');
+const searchUser = require('../controllers/users/searchUser');
 
 // Routes
 
@@ -114,5 +115,30 @@ router.post('/updateUser', updateUser);
  *         description: Notify user object.
  */
 router.post('/notifyUser', notifyUser);
+
+/**
+ * @openapi
+ * /api/v1/users/searchUser:
+ *   post:
+ *     summary: Search user
+ *     description: Search user by vehicle_number.
+ *     tags: [Users]
+ *     x-express-openapi-additional-middleware:
+ *       - type: body
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               vehicle_number:
+ *                 type: string
+ *                 description: vehicle number
+ *     responses:
+ *       200:
+ *         description: User object.
+ */
+router.post('/searchUser', searchUser);
 
 module.exports = router;

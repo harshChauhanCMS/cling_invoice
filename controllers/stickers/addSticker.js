@@ -6,6 +6,9 @@ const addSticker = async (req, res) => {
   try {
     await stickerValidation.Create.validateAsync(req.body);
     const data = req.body;
+    const lastDocument = await Stickers.findOne({}, {}, { sort: { _id: -1 } });
+    const newId = lastDocument ? lastDocument._id + 1 : 1;
+    data._id = newId;
     const sticker = await Stickers.create(data);
     res.status(200).json({
       success: true,

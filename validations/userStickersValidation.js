@@ -17,6 +17,9 @@ const userStickersValidation = {
     vehicle_name: Joi.string(),
     vehicle_number: Joi.string(),
   }),
+  Delete: Joi.object().keys({
+    _id: Joi.string().required(),
+  }),
 };
 
 module.exports = userStickersValidation;
