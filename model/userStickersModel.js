@@ -10,7 +10,7 @@ const userStickersSchema = new Schema(
     vehicle_name: { type: String },
     status: {
       type: String,
-      enum: ['active', 'deleted'],
+      enum: ['active', 'inactive'],
       default: 'active',
     },
   },

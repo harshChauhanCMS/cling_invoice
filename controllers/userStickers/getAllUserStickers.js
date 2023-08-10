@@ -14,6 +14,7 @@ const getAllUserStickers = async (req, res) => {
     }
     const userStickers = await UserStickers.find({
       user_id: user_id,
+      status: 'active',
     });
     res.status(200).json({
       success: true,
