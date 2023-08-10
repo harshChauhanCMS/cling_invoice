@@ -6,7 +6,7 @@ const getUpcomingReminder = async (req, res) => {
   try {
     await userRemindersValidation.getUpcomingReminder.validateAsync(req.body);
     const { user_id } = req.body;
-    const currentDate = new Date();
+    const currentDate = new Date(new Date().setHours(0, 0, 0, 0));
     const upcomingReminders = await UserReminders.find({
       user_id: user_id,
       expire_date: { $gt: currentDate },
