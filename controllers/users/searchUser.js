@@ -32,6 +32,9 @@ const searchUser = async (req, res) => {
       {
         $project: {
           user_id_objectId: 0,
+          user_data: {
+            fcm_token: 0,
+          },
         },
       },
     ]);
