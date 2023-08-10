@@ -149,6 +149,6 @@ router.post('/getUpcomingReminder', getUpcomingReminder);
  *       200:
  *         description: Deleted Reminders Object
  */
-router.post('/deleteUserReminder', deleteUserReminder);
+router.delete('/deleteUserReminder', deleteUserReminder);
 
 module.exports = router;

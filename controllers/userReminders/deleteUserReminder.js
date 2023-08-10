@@ -5,8 +5,8 @@ const userRemindersValidation = require('../../validations/userRemindersValidati
 const deleteUserReminder = async (req, res) => {
   try {
     await userRemindersValidation.Delete.validateAsync(req.body);
-    const { id } = req.body;
-    const userReminders = await UserReminders.findByIdAndDelete(id);
+    const { _id } = req.body;
+    const userReminders = await UserReminders.findByIdAndDelete(_id);
     res.status(200).json({
       success: true,
       message: 'User reminders deleted successfully',
