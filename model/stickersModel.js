@@ -7,7 +7,7 @@ const stickersSchema = new Schema(
     distributor_id: { type: String },
     status: {
       type: String,
-      enum: ['created', 'active'],
+      enum: ['created', 'active', 'inactive'],
       default: 'created',
     },
   },

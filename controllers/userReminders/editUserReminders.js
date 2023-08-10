@@ -5,9 +5,8 @@ const userRemindersValidation = require('../../validations/userRemindersValidati
 const editUserReminders = async (req, res) => {
   try {
     await userRemindersValidation.Update.validateAsync(req.body);
-    const data = req.body;
-    const { id } = req.params;
-    const userReminders = await UserReminders.findByIdAndUpdate(id, data, {
+    const { id, ...rest } = req.body;
+    const userReminders = await UserReminders.findByIdAndUpdate(id, rest, {
       new: true,
     });
     res.status(200).json({
