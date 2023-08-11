@@ -5,8 +5,7 @@ const userStickersValidation = require('../../validations/userStickersValidation
 const getAllUserStickers = async (req, res) => {
   try {
     await userStickersValidation.GetAll.validateAsync(req.body);
-    const { user_id } = req.query;
-    const { status } = req.body;
+    const { user_id, status } = req.query;
 
     const query = { user_id: user_id };
     if (status) {
