@@ -80,6 +80,18 @@ router.get('/findAll', findAllUsers);
  *                       type: string
  *                     phone_number:
  *                       type: string
+ *               fcm_token:
+ *                 type: string
+ *               gender:
+ *                 type: string
+ *               notification_preferences:
+ *                 type: object
+ *                 properties:
+ *                   sound_type:
+ *                     type: string
+ *                     enum: [long, short]
+ *                   allowed:
+ *                     type: boolean
  *     responses:
  *       200:
  *         description: User updated object.
