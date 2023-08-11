@@ -47,7 +47,7 @@ const sendReminder = async () => {
           title: 'Your test reminder',
           body: 'You have a new notification',
           token: reminder?.user?.fcm_token,
-          sound_type: reminder?.user?.sound_type || 'short',
+          sound_type: 'short',
         });
         if (response) {
           return `Notification sent ${response}!`;
