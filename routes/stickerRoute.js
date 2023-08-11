@@ -6,6 +6,7 @@ const addSticker = require('../controllers/stickers/addSticker');
 const massUpload = require('../controllers/stickers/massUpload');
 const massUpdate = require('../controllers/stickers/massUpdate');
 const { generateSticker } = require('../controllers/stickers/generateStickers');
+const getSticker = require('../controllers/stickers/getStickerDetails');
 
 // Routes
 
@@ -90,6 +91,31 @@ router.post('/massUpload', massUpload);
  */
 
 router.patch('/massUpdate', massUpdate);
+
+/**
+ * @openapi
+ * /api/v1/stickers/getSticker:
+ *   post:
+ *     summary: Get Sticker
+ *     description: Get sticker.
+ *     tags: [Stickers]
+ *     x-express-openapi-additional-middleware:
+ *       - type: body
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               sticker_id:
+ *                 type: string
+ *                 description: Sticker ID.
+ *     responses:
+ *       200:
+ *         description: Sticker Object
+ */
+router.post('/getSticker', getSticker);
 
 router.get('/generate', generateSticker);
 

@@ -2,7 +2,8 @@ const { Joi } = require('celebrate');
 
 const userStickersValidation = {
   GetAll: Joi.object().keys({
-    user_id: Joi.string().required(),
+    // user_id: Joi.string().required(),
+    status: Joi.string().valid('active', 'inactive'),
   }),
   Create: Joi.object().keys({
     user_id: Joi.string().required(),
