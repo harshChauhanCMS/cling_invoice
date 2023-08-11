@@ -5,7 +5,10 @@ const qrTemplete = require('../../utils/qrTemplate');
 const sticker = require('../../model/stickersModel');
 exports.generateSticker = async (req, res) => {
   try {
-    const { from, to } = req.query;
+    const { quantity } = req.query;
+    const lastSticker = await sticker.find().sort({ _id: -1 }).limit(1);
+    const from = (lastSticker[0]._id || 0) + 1;
+    const to = parseInt(from) + parseInt(quantity) - 1;
     const qrcodes = [];
     const stickerToCreate = [];
     for (let i = parseInt(from); i <= parseInt(to); i++) {
@@ -20,8 +23,8 @@ exports.generateSticker = async (req, res) => {
         JSON.stringify(data),
         {
           color: {
-            dark: '#64194d',
-            light: '#ffffff',
+            dark: '#273c75',
+            light: '#fdcb6e',
           },
           height: 500,
           width: 500,
@@ -37,7 +40,7 @@ exports.generateSticker = async (req, res) => {
       await htmltoimage({
         output: `./qrOutputs/${i}.jpg`,
         html: qrTemplete(i),
-        selector: '.container',
+        selector: '#sticker',
       });
       stickerToCreate.push({
         _id: i,
