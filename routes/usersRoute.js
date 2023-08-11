@@ -17,18 +17,13 @@ const searchUser = require('../controllers/users/searchUser');
  *     summary: Get a single user
  *     description: Retrieve a single user by ID.
  *     tags: [Users]
- *     x-express-openapi-additional-middleware:
- *       - type: body
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               id:
- *                 type: string
- *                 description: ID of the user to retrieve.
+ *     parameters:
+ *       - in: query
+ *         name: _id
+ *         schema:
+ *           type: string
+ *         description: ID of the user to retrieve.
+ *         required: true
  *     responses:
  *       200:
  *         description: Single user object.
@@ -52,9 +47,9 @@ router.get('/findAll', findAllUsers);
 /**
  * @openapi
  * /api/v1/users/updateUser:
- *   patch:
+ *   post:
  *     summary: Update a user
- *     description: Update a user by id.
+ *     description: Update a user by ID.
  *     tags: [Users]
  *     x-express-openapi-additional-middleware:
  *       - type: body
@@ -79,9 +74,12 @@ router.get('/findAll', findAllUsers);
  *               emergency_contacts:
  *                 type: array
  *                 items:
- *                   type: string
- *               fcm_token:
- *                 type: string
+ *                   type: object
+ *                   properties:
+ *                     relation:
+ *                       type: string
+ *                     phone_number:
+ *                       type: string
  *     responses:
  *       200:
  *         description: User updated object.

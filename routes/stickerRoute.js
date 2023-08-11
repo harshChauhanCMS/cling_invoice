@@ -117,6 +117,28 @@ router.patch('/massUpdate', massUpdate);
  */
 router.post('/getSticker', getSticker);
 
+/**
+ * @openapi
+ * /api/v1/stickers/generate:
+ *   get:
+ *     summary: Generate QR
+ *     description: Generate QR
+ *     tags: [Stickers]
+ *     parameters:
+ *       - in: query
+ *         name: from
+ *         schema:
+ *           type: integer
+ *         description: From number.
+ *       - in: query
+ *         name: to
+ *         schema:
+ *           type: integer
+ *         description: To number.
+ *     responses:
+ *       200:
+ *         description: QR Object
+ */
 router.get('/generate', generateSticker);
 
 module.exports = router;

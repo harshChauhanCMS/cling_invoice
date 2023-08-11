@@ -12,22 +12,22 @@ const deleteUserSticker = require('../controllers/userStickers/deleteUserSticker
 /**
  * @openapi
  * /api/v1/userStickers/getUserStickers:
- *   post:
+ *   get:
  *     summary: Get All User Stickers
  *     description: Retrieve all user stickers.
  *     tags: [User Stickers]
- *     x-express-openapi-additional-middleware:
- *       - type: body
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               user_id:
- *                 type: string
- *                 description: ID of the user.
+ *     parameters:
+ *       - in: query
+ *         name: user_id
+ *         schema:
+ *           type: string
+ *         description: ID of the user.
+ *         required: true
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *         description: Status of the stickers.
  *     responses:
  *       200:
  *         description: All User Stickers Object
@@ -54,8 +54,14 @@ router.get('/getUserStickers', getAllUserStickers);
  *                 type: string
  *                 description: ID of the user.
  *               sticker_id:
- *                type: string
- *                description: ID of the sticker.
+ *                 type: number
+ *                 description: ID of the sticker.
+ *               vehicle_number:
+ *                 type: string
+ *               vehicle_make:
+ *                 type: string
+ *               vehicle_name:
+ *                 type: string
  *     responses:
  *       200:
  *         description: User Sticker Object
@@ -65,7 +71,7 @@ router.post('/addUserSticker', addUserSticker);
 /**
  * @openapi
  * /api/v1/userStickers/updateUserSticker:
- *   patch:
+ *   post:
  *     summary: Update User Sticker
  *     description: Update a user sticker.
  *     tags: [User Stickers]
