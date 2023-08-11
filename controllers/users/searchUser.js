@@ -5,7 +5,7 @@ const userValidation = require('../../validations/userValidation');
 const searchUser = async (req, res) => {
   try {
     await userValidation.Search.validateAsync(req.body);
-    const { vehicle_number } = req.query;
+    const { vehicle_number } = req.body;
 
     const userAndStickerData = await UserStickers.aggregate([
       {
@@ -38,12 +38,18 @@ const searchUser = async (req, res) => {
         },
       },
     ]);
-
-    res.status(200).json({
-      success: true,
-      message: 'User and sticker details fetched successfully',
-      data: userAndStickerData,
-    });
+    if (userAndStickerData.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'No user found with this vehicle number',
+      });
+    } else {
+      res.status(200).json({
+        success: true,
+        message: 'User and sticker details fetched successfully',
+        data: userAndStickerData[0],
+      });
+    }
   } catch (error) {
     const message = customErrorMessages(error);
     const status = error.isJoi ? 422 : 400;
