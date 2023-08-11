@@ -13,7 +13,7 @@ const deleteUserReminder = require('../controllers/userReminders/deleteUserRemin
 /**
  * @openapi
  * /api/v1/userReminders/editUserReminders:
- *   patch:
+ *   put:
  *     summary: Edit User Reminders
  *     description: Edit User Reminders
  *     tags: [UserReminders]
