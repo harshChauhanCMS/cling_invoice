@@ -13,6 +13,8 @@ const userStickersSchema = new Schema(
       enum: ['active', 'inactive'],
       default: 'active',
     },
+    vehicle_company: { type: String },
+    vehicle_type: { type: String },
   },
   {
     timestamps: true,
