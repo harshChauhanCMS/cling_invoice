@@ -20,6 +20,7 @@ const userValidation = {
       sound_type: Joi.string().valid('long', 'short'),
       allowed: Joi.boolean(),
     }),
+    preferred_language: Joi.string(),
   }),
   Notify: Joi.object().keys({
     sticker_id: Joi.number().required(),
