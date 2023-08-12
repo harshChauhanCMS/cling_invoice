@@ -12,16 +12,11 @@ const deleteUserReminder = require('../controllers/userReminders/deleteUserRemin
 
 /**
  * @openapi
- * /api/v1/userReminders/editUserReminders/{id}:
- *   patch:
+ * /api/v1/userReminders/editUserReminders:
+ *   put:
  *     summary: Edit User Reminders
  *     description: Edit User Reminders
  *     tags: [UserReminders]
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         description: ID of the user reminder to edit.
  *     requestBody:
  *       required: true
  *       content:
@@ -29,6 +24,9 @@ const deleteUserReminder = require('../controllers/userReminders/deleteUserRemin
  *           schema:
  *             type: object
  *             properties:
+ *               id:
+ *                 type: string
+ *                 description: Id.
  *               title:
  *                 type: string
  *                 description: Title.

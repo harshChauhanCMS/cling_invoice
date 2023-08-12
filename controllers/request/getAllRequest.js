@@ -10,6 +10,7 @@ const getAllRequest = async (req, res) => {
     const totalPages = Math.ceil(totalRequests / limit);
 
     const requests = await Request.find()
+      .sort({ createdAt: -1 })
       .skip((page - 1) * limit)
       .limit(limit);
 
