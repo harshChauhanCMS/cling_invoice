@@ -35,7 +35,7 @@ app.all('/api/v1/*', (req, res, next) => {
   const publicRoutes = [
     'auth/login',
     'auth/verifyToken',
-    'stickers/addSticker',
+    // 'stickers/addSticker',
     'users/notifyUser',
     'stickers/generate',
   ];

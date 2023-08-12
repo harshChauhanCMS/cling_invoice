@@ -7,6 +7,7 @@ const userStickersRoute = require('./userStickersRoute');
 const distributorRoute = require('./distributorRoute');
 const userRemindersRoute = require('./userRemindersRoute');
 const requestRoute = require('./requestRoute');
+const sessionRoute = require('./userSessionRoute');
 
 // Routes
 const moduleRoutes = [
@@ -37,6 +38,10 @@ const moduleRoutes = [
   {
     path: '/request',
     route: requestRoute,
+  },
+  {
+    path: '/sessions',
+    route: sessionRoute,
   },
 ];
 
