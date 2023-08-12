@@ -11,7 +11,6 @@ const userStickersValidation = {
     vehicle_number: Joi.string(),
     vehicle_make: Joi.string(),
     vehicle_name: Joi.string(),
-    vehicle_company: Joi.string(),
     vehicle_type: Joi.string(),
   }),
   Update: Joi.object().keys({
@@ -19,7 +18,6 @@ const userStickersValidation = {
     vehicle_make: Joi.string(),
     vehicle_name: Joi.string(),
     vehicle_number: Joi.string(),
-    vehicle_company: Joi.string(),
     vehicle_type: Joi.string(),
   }),
   Delete: Joi.object().keys({
