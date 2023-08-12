@@ -38,6 +38,8 @@ app.all('/api/v1/*', (req, res, next) => {
     // 'stickers/addSticker',
     'users/notifyUser',
     'stickers/generate',
+    'stickers/getSticker',
+    'request/addRequest',
   ];
   const path = req.path.split('/v1/')[1];
   if (publicRoutes.includes(path)) {

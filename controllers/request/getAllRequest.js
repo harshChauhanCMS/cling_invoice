@@ -5,11 +5,13 @@ const getAllRequest = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
+    const { status } = req.query;
 
     const totalRequests = await Request.countDocuments();
     const totalPages = Math.ceil(totalRequests / limit);
 
-    const requests = await Request.find()
+    const requests = await Request.find({ status })
+      .sort({ createdAt: -1 })
       .skip((page - 1) * limit)
       .limit(limit);
 
