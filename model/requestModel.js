@@ -4,7 +4,11 @@ const { Schema } = mongoose;
 const requestSchema = new Schema(
   {
     phone_number: { type: String },
-    is_contacted: { type: Boolean, default: false },
+    status: {
+      type: String,
+      enum: ['requested', 'contacted', 'converted'],
+      default: 'requested',
+    },
     remarks: { type: String },
   },
   {
