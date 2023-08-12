@@ -3,7 +3,9 @@ const { Joi } = require('celebrate');
 const requestValidation = {
   Create: Joi.object().keys({
     phone_number: Joi.string().required(),
-    is_contacted: Joi.boolean(),
+    status: Joi.string()
+      .valid('requested', 'contacted', 'converted')
+      .required(),
     remarks: Joi.string().required(),
   }),
 };

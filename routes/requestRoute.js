@@ -26,10 +26,9 @@ const getAllRequest = require('../controllers/request/getAllRequest');
  *               phone_number:
  *                 type: string
  *                 description: Phone number of the user
- *               is_contacted:
- *                 type: boolean
- *                 required: false
- *                 description: Is contacted or not
+ *               status:
+ *                 type: string
+ *                 description: status
  *               remarks:
  *                 type: string
  *                 description: Remarks
