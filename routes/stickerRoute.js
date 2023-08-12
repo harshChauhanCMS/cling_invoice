@@ -7,6 +7,7 @@ const massUpload = require('../controllers/stickers/massUpload');
 const massUpdate = require('../controllers/stickers/massUpdate');
 const { generateSticker } = require('../controllers/stickers/generateStickers');
 const getSticker = require('../controllers/stickers/getStickerDetails');
+const generate = require('../controllers/stickers/generateWithLogo');
 
 // Routes
 
@@ -118,5 +119,7 @@ router.patch('/massUpdate', massUpdate);
 router.post('/getSticker', getSticker);
 
 router.get('/generate', generateSticker);
+
+router.get('/generateWithLogo', generate);
 
 module.exports = router;

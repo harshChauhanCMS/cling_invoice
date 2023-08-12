@@ -26,7 +26,6 @@ const qrTemplete = (imageNumber) => {
         .image {
           width: 100%;
           height: 100%;
-          padding: 20px;
         }
         .qrImage {
           width: 100%;
@@ -52,6 +51,8 @@ const qrTemplete = (imageNumber) => {
             background-color: #eb6506;
             border: 1px solid #7f8fa6;
             border-radius: 10px;
+            height: 1011px;
+            width: 638px;
           "
         >
           <div
@@ -71,6 +72,7 @@ const qrTemplete = (imageNumber) => {
               height="1em"
               viewBox="0 0 512 512"
             >
+              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
               <path
                 d="M280 0C408.1 0 512 103.9 512 232c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184c-13.3 0-24-10.7-24-24s10.7-24 24-24zm8 192a32 32 0 1 1 0 64 32 32 0 1 1 0-64zm-32-72c0-13.3 10.7-24 24-24c75.1 0 136 60.9 136 136c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88c-13.3 0-24-10.7-24-24zM117.5 1.4c19.4-5.3 39.7 4.6 47.4 23.2l40 96c6.8 16.3 2.1 35.2-11.6 46.3L144 207.3c33.3 70.4 90.3 127.4 160.7 160.7L345 318.7c11.2-13.7 30-18.4 46.3-11.6l96 40c18.6 7.7 28.5 28 23.2 47.4l-24 88C481.8 499.9 466 512 448 512C200.6 512 0 311.4 0 64C0 46 12.1 30.2 29.5 25.4l88-24z"
               />
@@ -80,7 +82,7 @@ const qrTemplete = (imageNumber) => {
           <div style="display: flex; justify-content: center; height: 65%">
             <div
               style="
-                margin: 0 20px;
+                margin: 0 35px;
                 flex: 1;
                 border: 2px solid white;
                 border-radius: 10px;
@@ -97,14 +99,14 @@ const qrTemplete = (imageNumber) => {
                   display: flex;
                   flex-direction: column;
                   height: 50%;
-                  justify-content: space-evenly;
+                  justify-content: flex-start;
                 "
               >
                 <div>
                   <p
                     style="
                       margin-top: 10px;
-                      font-size: 20px;
+                      font-size: 22px;
                       text-align: center;
                       font-weight: 600;
                       color: #273c75;
@@ -112,30 +114,18 @@ const qrTemplete = (imageNumber) => {
                   >
                     ${imageNumber}
                   </p>
-                  <p
-                    style="
-                      margin-top: 5px;
-                      font-size: 20px;
-                      text-align: center;
-                      font-weight: 600;
-                      color: #273c75;
-                    "
-                  >
-                    Vahan <span>Setu</span>
-                  </p>
                 </div>
                 <div
                   style="
-                    width: 60%;
-                    height: 1px;
-                    background-color: #fff;
-                    margin: 0 auto;
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
                   "
-                ></div>
-                <div>
+                >
                   <p
                     style="
-                      font-size: 20px;
+                      font-size: 25px;
                       text-align: center;
                       font-weight: 600;
                       color: #273c75;
@@ -146,8 +136,8 @@ const qrTemplete = (imageNumber) => {
                   <p
                     style="
                       line-height: normal;
-                      margin-top: 5px;
-                      font-size: 25px;
+                      margin-top: 8px;
+                      font-size: 30px;
                       text-align: center;
                       font-weight: bold;
                       color: #273c75;
@@ -155,33 +145,48 @@ const qrTemplete = (imageNumber) => {
                   >
                     Contact Vehicle Owner
                   </p>
+                  <div
+                    style="
+                      width: 70%;
+                      height: 1px;
+                      background-color: #fff;
+                      margin: 16px auto;
+                    "
+                  ></div>
                   <p
                     style="
-                      margin-top: 5px;
-                      font-size: 20px;
+                      font-size: 22px;
                       text-align: center;
                       font-weight: 600;
                       color: #273c75;
                     "
                   >
-                    Call: 8881831836
+                    Customer Care: 8881831836
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div style="display: flex; height: 15%; width: 100%">
+          <div
+            style="
+              display: flex;
+              height: 15%;
+              width: 100%;
+              padding: 0 35px;
+              column-gap: 8%;
+            "
+          >
             <div style="width: 50%">
               <img
                 class="image"
-                src="http://localhost:8000/playStore.svg"
+                src="http://localhost:8000/play_store.svg"
                 alt="play store icon"
               />
             </div>
             <div style="width: 50%">
               <img
                 class="image"
-                src="http://localhost:8000/appStore.svg"
+                src="http://localhost:8000/app_store.svg"
                 alt="app store icon"
               />
             </div>
@@ -190,6 +195,7 @@ const qrTemplete = (imageNumber) => {
       </main>
     </body>
   </html>
+  
   
               `;
   return html;
