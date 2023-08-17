@@ -33,6 +33,10 @@ const getUserStickersDetails = async (req, res) => {
         },
       },
       {
+        $unwind: '$user',
+      },
+
+      {
         $sort: sort,
       },
       {
