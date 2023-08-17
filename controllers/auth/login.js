@@ -35,6 +35,7 @@ const login = async (req, res) => {
           _id: newUser?._id,
           phone_number: newUser?.phone_number,
           expiry: expiryTime,
+          session_id: session?._id,
         },
         process.env.JWT_SECRET
       );
