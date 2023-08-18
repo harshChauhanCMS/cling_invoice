@@ -22,7 +22,7 @@ const usersSchema = new Schema(
       sound_type: { type: String, enum: ['long', 'short'] },
       allowed: { type: Boolean, default: true },
     },
-    preferred_language: { type: String, default: 'English' },
+    preferred_language: { type: String },
     user_type: {
       type: String,
       enum: ['user', 'admin', 'customer_care'],
