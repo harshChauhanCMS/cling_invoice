@@ -20,6 +20,17 @@ const sendPushNotification = async ({ title, body, token, sound_type }) => {
             channelId: sound_type,
           },
         },
+        apns: {
+          payload: {
+            aps: {
+              sound: sound_type === 'long' ? 'shape.mp3' : 'notification.mp3',
+            },
+          },
+        },
+        data: {
+          title: 'Notification title',
+          body: 'Notfication body',
+        },
       })
       .then(() => true)
       .catch(() => false);
