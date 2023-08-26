@@ -1,31 +1,27 @@
-const AWS = require('aws-sdk');
-
-const ses = new AWS.SES({
-  region: 'ap-south-1',
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_KEY,
-});
+const nodemailer = require('nodemailer');
 
 const sendMail = async ({ to, subject, message }) => {
   try {
-    const res = await ses
-      .sendEmail({
-        Source: process.env.EMAIL,
-        Destination: {
-          ToAddresses: [to],
-        },
-        Message: {
-          Body: {
-            Text: {
-              Data: message,
-            },
-          },
-          Subject: {
-            Data: subject,
-          },
-        },
-      })
-      .promise();
+    const mailOptions = {
+      from: process.env.EMAIL,
+      to: to,
+      subject: subject,
+      text: message,
+    };
+
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      service: 'gmail',
+      secure: true,
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.APP_PASSWORD,
+      },
+    });
+
+    const res = await transporter.sendMail(mailOptions);
+
     return res;
   } catch (error) {
     return false;
