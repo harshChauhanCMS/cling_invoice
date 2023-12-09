@@ -1,12 +1,13 @@
 const nodemailer = require('nodemailer');
 
-const sendMail = async ({ to, subject, message }) => {
+const sendMail = async ({ to, subject, message, attachments }) => {
   try {
     const mailOptions = {
-      from: process.env.EMAIL,
+      from: 'clingmultisolutions@gmail.com',
       to: to,
       subject: subject,
       text: message,
+      attachments: attachments,
     };
 
     const transporter = nodemailer.createTransport({
@@ -15,13 +16,12 @@ const sendMail = async ({ to, subject, message }) => {
       service: 'gmail',
       secure: true,
       auth: {
-        user: process.env.EMAIL,
-        pass: process.env.APP_PASSWORD,
+        user: 'clingmultisolutions@gmail.com',
+        pass: 'zsbpqoopdzpauqls',
       },
     });
 
     const res = await transporter.sendMail(mailOptions);
-
     return res;
   } catch (error) {
     return false;

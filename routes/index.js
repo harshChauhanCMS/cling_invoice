@@ -1,47 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const usersRoute = require('./usersRoute');
-const authRoute = require('./authRoute');
-const stickerRoute = require('./stickerRoute');
-const userStickersRoute = require('./userStickersRoute');
-const distributorRoute = require('./distributorRoute');
-const userRemindersRoute = require('./userRemindersRoute');
-const requestRoute = require('./requestRoute');
-const sessionRoute = require('./userSessionRoute');
+const invoiceRoute = require('./invoiceRoute');
 
 // Routes
 const moduleRoutes = [
   {
-    path: '/auth',
-    route: authRoute,
-  },
-  {
-    path: '/users',
-    route: usersRoute,
-  },
-  {
-    path: '/stickers',
-    route: stickerRoute,
-  },
-  {
-    path: '/userStickers',
-    route: userStickersRoute,
-  },
-  {
-    path: '/distributors',
-    route: distributorRoute,
-  },
-  {
-    path: '/userReminders',
-    route: userRemindersRoute,
-  },
-  {
-    path: '/request',
-    route: requestRoute,
-  },
-  {
-    path: '/sessions',
-    route: sessionRoute,
+    path: '/invoice',
+    route: invoiceRoute,
   },
 ];
 
