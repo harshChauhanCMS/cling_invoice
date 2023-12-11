@@ -1,8 +1,10 @@
+/* eslint-disable max-lines */
 const pdf = require('html-pdf-node');
 // const fs = require('fs');
 const { customErrorMessages } = require('../../utils/helpers');
 const invoiceValidation = require('../../validations/invoiceValidation');
 const sendMail = require('../../utils/sendMail');
+const InvoiceModel = require('../../model/invoiceModel');
 
 const invoice = async (req, res) => {
   try {
@@ -287,9 +289,13 @@ const invoice = async (req, res) => {
       attachments: attachments,
     });
 
+    const invoiceResponse = await InvoiceModel.create(req.body);
+
     // fs.writeFileSync('invoice.pdf', pdfBuffer);
     // res.download('invoice.pdf');
-    res.status(200).json({ success: true, message: 'Invoice generated' });
+    res
+      .status(200)
+      .json({ success: true, message: 'Invoice generated', invoiceResponse });
   } catch (error) {
     const message = customErrorMessages(error);
     const status = error.isJoi ? 422 : 400;

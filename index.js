@@ -5,6 +5,7 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 8000;
 const upload = require('express-fileupload');
+const mongoose = require('mongoose');
 
 // Import routes
 const bodyParser = require('body-parser');
@@ -45,6 +46,7 @@ app.use((req, res) => {
 // Database connection
 async function main() {
   try {
+    await mongoose.connect(process.env.DATABASE_URL);
     console.log('🛢 Database is connected successfully');
     app.listen(port, () => {
       console.log(`Application  listening on port ${port}...`);
