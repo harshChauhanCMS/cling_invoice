@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 const sendMail = async ({ to, subject, message, attachments }) => {
   try {
     const mailOptions = {
-      from: 'clingmultisolutions@gmail.com',
+      from: 'invoices.clingmultisolutions@gmail.com',
       to: to,
       subject: subject,
       text: message,
@@ -16,8 +16,8 @@ const sendMail = async ({ to, subject, message, attachments }) => {
       service: 'gmail',
       secure: true,
       auth: {
-        user: 'clingmultisolutions@gmail.com',
-        pass: 'zsbpqoopdzpauqls',
+        user: 'invoices.clingmultisolutions@gmail.com',
+        pass: 'kantpdawenemolim',
       },
     });
 

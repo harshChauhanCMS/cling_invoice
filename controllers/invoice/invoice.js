@@ -76,7 +76,7 @@ const invoice = async (req, res) => {
             <div>
               <div><span>Date: </span> <span>${date}</span></div>
               <div><span>Invoice: </span> <span>${invoice_number}</span></div>
-              <div><span>NID: </span><span>${pan_number}</span></div>
+              <div><span>PAN: </span><span>${pan_number}</span></div>
             </div>
           </div>
           <div>
