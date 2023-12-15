@@ -18,29 +18,13 @@ const userModel = new mongoose.Schema(
     account_type: {
       type: String,
     },
-    amounts: [
-      {
-        description: {
-          type: String,
-        },
-        amount: {
-          type: String,
-        },
-      },
-    ],
     bank_name: {
       type: String,
     },
     branch_name: {
       type: String,
     },
-    date: {
-      type: String,
-    },
     ifsc_code: {
-      type: String,
-    },
-    invoice_number: {
       type: String,
     },
     mobile_no: {
