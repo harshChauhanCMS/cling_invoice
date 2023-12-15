@@ -8,20 +8,10 @@ const login = async (req, res) => {
     const { email, password } = req.body;
     const user = await UserModel.findOne({ email: email });
 
-    // If no user found, create a new user
     if (!user) {
-      const newPassword = await bcrypt.hash(
-        password,
-        Number(process.env.BCRYPT_SALT_ROUNDS)
-      );
-      const newUser = await UserModel.create({ email, password: newPassword });
-      const { _id: userId } = newUser;
-      const accessToken = jwt.sign({ userId }, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_EXPIRES_IN,
-      });
       return res
-        .status(200)
-        .json({ success: true, message: 'Login Successful', accessToken });
+        .status(400)
+        .json({ success: false, message: 'Invalid credentials' });
     }
 
     // If user found, check if password matches
