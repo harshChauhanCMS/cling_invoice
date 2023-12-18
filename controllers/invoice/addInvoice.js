@@ -6,7 +6,7 @@ const invoiceValidation = require('../../validations/invoiceValidation');
 const sendMail = require('../../utils/sendMail');
 const InvoiceModel = require('../../model/invoiceModel');
 
-const invoice = async (req, res) => {
+const addInvoice = async (req, res) => {
   try {
     await invoiceValidation.invoice.validateAsync(req.body);
     const { id } = req;
@@ -305,4 +305,4 @@ const invoice = async (req, res) => {
   }
 };
 
-module.exports = invoice;
+module.exports = addInvoice;
