@@ -1,13 +1,10 @@
 const { customErrorMessages } = require('../../utils/helpers');
-const invoiceValidation = require('../../validations/invoiceValidation');
 const InvoiceModel = require('../../model/invoiceModel');
 
-const addInvoice = async (req, res) => {
+const deleteInvoice = async (req, res) => {
   try {
-    await invoiceValidation.invoice.validateAsync(req.body);
-    const { id } = req;
-    req.body.userId = id;
-    const invoiceResponse = await InvoiceModel.create(req.body);
+    const { id } = req.params;
+    const invoiceResponse = await InvoiceModel.findByIdAndDelete(id);
     res
       .status(200)
       .json({ success: true, message: 'Invoice generated', invoiceResponse });
@@ -18,4 +15,4 @@ const addInvoice = async (req, res) => {
   }
 };
 
-module.exports = addInvoice;
+module.exports = deleteInvoice;
