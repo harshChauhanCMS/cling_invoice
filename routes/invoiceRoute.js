@@ -9,10 +9,10 @@ const addInvoice = require('../controllers/invoice/addInvoice');
 const deleteInvoice = require('../controllers/invoice/deleteInvoice');
 
 // Routes
+router.post('/addInvoice', addInvoice);
 router.post('/:id', invoiceRoute);
 router.get('/:id', getSingleInvoice);
 router.delete('/:id', deleteInvoice);
 router.get('/', getInvoice);
-router.post('/addInvoice', addInvoice);
 
 module.exports = router;
