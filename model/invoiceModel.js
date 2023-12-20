@@ -63,6 +63,9 @@ const invoiceModel = new mongoose.Schema(
       type: String,
       required: true,
     },
+    nid_number: {
+      type: String,
+    },
   },
   {
     timestamps: true,

@@ -23,6 +23,7 @@ const invoiceValidation = {
     mobile_no: Joi.string().required(),
     name: Joi.string().required(),
     pan_number: Joi.string().required(),
+    nid_number: Joi.string(),
   }),
 };
 

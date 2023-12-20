@@ -36,6 +36,9 @@ const userModel = new mongoose.Schema(
     pan_number: {
       type: String,
     },
+    nid_number: {
+      type: String,
+    },
   },
   {
     timestamps: true,
