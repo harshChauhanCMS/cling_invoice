@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const invoiceModel = new mongoose.Schema(
   {
+    userId: {
+      type: String,
+      required: true,
+    },
     account_holder_name: {
       type: String,
       required: true,
@@ -58,6 +62,9 @@ const invoiceModel = new mongoose.Schema(
     pan_number: {
       type: String,
       required: true,
+    },
+    nid_number: {
+      type: String,
     },
   },
   {

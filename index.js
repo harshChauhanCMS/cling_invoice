@@ -12,6 +12,7 @@ const bodyParser = require('body-parser');
 const router = require('./routes');
 
 // Import middleware
+const authMiddleware = require('./middleware/authMiddleware');
 const errorHandler = require('./middleware/errorHandler');
 
 // Static files
@@ -23,6 +24,16 @@ app.use(upload());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
+
+app.all('/api/v1/*', (req, res, next) => {
+  const publicRoutes = ['auth/login', 'auth/register'];
+  const path = req.path.split('/v1/')[1];
+  if (publicRoutes.includes(path)) {
+    return next();
+  } else {
+    return authMiddleware.authenticateToken(req, res, next);
+  }
+});
 
 // Routes
 app.use('/api/v1/', router);

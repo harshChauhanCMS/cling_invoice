@@ -1,14 +1,13 @@
-/* eslint-disable max-lines */
 const pdf = require('html-pdf-node');
-// const fs = require('fs');
 const { customErrorMessages } = require('../../utils/helpers');
-const invoiceValidation = require('../../validations/invoiceValidation');
 const sendMail = require('../../utils/sendMail');
 const InvoiceModel = require('../../model/invoiceModel');
 
 const invoice = async (req, res) => {
   try {
-    await invoiceValidation.invoice.validateAsync(req.body);
+    const { id } = req.params;
+    const invoiceDetails = await InvoiceModel.findById(id);
+
     const {
       account_holder_name = '',
       account_number = '',
@@ -23,7 +22,7 @@ const invoice = async (req, res) => {
       mobile_no = '',
       name = '',
       pan_number = '',
-    } = req.body;
+    } = invoiceDetails;
 
     const total_amount = amounts.reduce(
       (acc, { amount }) => acc + Number(amount),
@@ -289,13 +288,7 @@ const invoice = async (req, res) => {
       attachments: attachments,
     });
 
-    const invoiceResponse = await InvoiceModel.create(req.body);
-
-    // fs.writeFileSync('invoice.pdf', pdfBuffer);
-    // res.download('invoice.pdf');
-    res
-      .status(200)
-      .json({ success: true, message: 'Invoice generated', invoiceResponse });
+    res.status(200).json({ success: true, message: 'Invoice generated' });
   } catch (error) {
     const message = customErrorMessages(error);
     const status = error.isJoi ? 422 : 400;
