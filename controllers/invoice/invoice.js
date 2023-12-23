@@ -1,12 +1,23 @@
+/* eslint-disable max-lines */
 const pdf = require('html-pdf-node');
 const { customErrorMessages } = require('../../utils/helpers');
 const sendMail = require('../../utils/sendMail');
 const InvoiceModel = require('../../model/invoiceModel');
+const UserModel = require('../../model/user');
 
 const invoice = async (req, res) => {
   try {
     const { id } = req.params;
     const invoiceDetails = await InvoiceModel.findById(id);
+    const { manager_name } = await UserModel.findById(invoiceDetails.userId);
+
+    if (!invoiceDetails) {
+      throw new Error('Invoice not found');
+    }
+
+    if (!manager_name) {
+      throw new Error('Add manager name to your profile');
+    }
 
     const {
       account_holder_name = '',
@@ -283,6 +294,7 @@ const invoice = async (req, res) => {
 
     sendMail({
       to: ['samirmeraj60@gmail.com', 'forhadmia416@gmail.com'],
+      cc: [manager_name],
       subject: `#INVOICE-${previousMonthName}-${previousMonthYear}-${name}`,
       message: '',
       attachments: attachments,
