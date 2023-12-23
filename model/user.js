@@ -39,6 +39,14 @@ const userModel = new mongoose.Schema(
     nid_number: {
       type: String,
     },
+    manager_name: {
+      type: String,
+    },
+    role: {
+      type: String,
+      enum: ['admin', 'user'],
+      default: 'user',
+    },
   },
   {
     timestamps: true,

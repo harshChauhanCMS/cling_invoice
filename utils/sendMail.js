@@ -1,10 +1,11 @@
 const nodemailer = require('nodemailer');
 
-const sendMail = async ({ to, subject, message, attachments }) => {
+const sendMail = async ({ to, cc, subject, message, attachments }) => {
   try {
     const mailOptions = {
       from: 'invoices.clingmultisolutions@gmail.com',
       to: to,
+      cc: cc,
       subject: subject,
       text: message,
       attachments: attachments,

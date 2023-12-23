@@ -12,6 +12,7 @@ const userDetailsValidation = {
     name: Joi.string().required(),
     pan_number: Joi.string().required(),
     nid_number: Joi.string(),
+    manager_name: Joi.string(),
   }),
 };
 
