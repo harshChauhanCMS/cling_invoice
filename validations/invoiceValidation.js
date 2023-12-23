@@ -18,12 +18,12 @@ const invoiceValidation = {
     branch_name: Joi.string(),
     date: Joi.string().required(),
     email: Joi.string().required(),
-    ifsc_code: Joi.string(),
+    ifsc_code: Joi.string().allow(''),
     invoice_number: Joi.string().required(),
     mobile_no: Joi.string().required(),
     name: Joi.string().required(),
-    pan_number: Joi.string().required(),
-    nid_number: Joi.string(),
+    pan_number: Joi.string().allow(''),
+    nid_number: Joi.string().allow(''),
   }),
 };
 

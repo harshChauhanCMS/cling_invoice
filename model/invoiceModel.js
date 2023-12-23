@@ -61,7 +61,6 @@ const invoiceModel = new mongoose.Schema(
     },
     pan_number: {
       type: String,
-      required: true,
     },
     nid_number: {
       type: String,

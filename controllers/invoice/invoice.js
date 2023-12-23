@@ -1,3 +1,4 @@
+/* eslint-disable no-unneeded-ternary */
 /* eslint-disable max-lines */
 const pdf = require('html-pdf-node');
 const { customErrorMessages } = require('../../utils/helpers');
@@ -33,6 +34,7 @@ const invoice = async (req, res) => {
       mobile_no = '',
       name = '',
       pan_number = '',
+      nid_number = '',
     } = invoiceDetails;
 
     const total_amount = amounts.reduce(
@@ -86,7 +88,9 @@ const invoice = async (req, res) => {
             <div>
               <div><span>Date: </span> <span>${date}</span></div>
               <div><span>Invoice: </span> <span>${invoice_number}</span></div>
-              <div><span>PAN: </span><span>${pan_number}</span></div>
+              <div><span>${pan_number ? 'PAN' : 'NID'}: </span><span>${
+                pan_number ? pan_number : nid_number
+              }</span></div>
             </div>
           </div>
           <div>
