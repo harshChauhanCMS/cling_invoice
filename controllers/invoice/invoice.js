@@ -297,7 +297,11 @@ const invoice = async (req, res) => {
     const previousMonthYear = today.getFullYear();
 
     sendMail({
-      to: ['samirmeraj60@gmail.com', 'forhadmia416@gmail.com'],
+      to: [
+        'samirmeraj60@gmail.com',
+        'forhadmia416@gmail.com',
+        'kanchan1794@gmail.com',
+      ],
       cc: [manager_name],
       subject: `#INVOICE-${previousMonthName}-${previousMonthYear}-${name}`,
       message: '',
