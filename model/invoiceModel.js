@@ -17,6 +17,11 @@ const invoiceModel = new mongoose.Schema(
     account_type: {
       type: String,
     },
+    status: {
+      type: String,
+      enum: ['created', 'sent'],
+      default: 'created',
+    },
     amounts: [
       {
         description: {
@@ -37,7 +42,7 @@ const invoiceModel = new mongoose.Schema(
       type: String,
     },
     date: {
-      type: String,
+      type: Date,
       required: true,
     },
     email: {

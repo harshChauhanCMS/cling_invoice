@@ -303,10 +303,12 @@ const invoice = async (req, res) => {
         'kanchan1794@gmail.com',
       ],
       cc: [manager_name],
-      subject: `#INVOICE-${previousMonthName}-${previousMonthYear}-${name}`,
+      subject: `#CLING-INVOICE-${previousMonthName}-${previousMonthYear}-${name}`,
       message: '',
       attachments: attachments,
     });
+
+    await InvoiceModel.findByIdAndUpdate(id, { status: 'sent' });
 
     res.status(200).json({ success: true, message: 'Invoice generated' });
   } catch (error) {

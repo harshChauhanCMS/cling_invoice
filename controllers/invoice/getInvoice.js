@@ -3,7 +3,9 @@ const InvoiceModel = require('../../model/invoiceModel');
 
 const getInvoice = async (req, res) => {
   const { id } = req;
-  const invoices = await InvoiceModel.find({ userId: id });
+  const invoices = await InvoiceModel.find({ userId: id }).sort({
+    createdAt: -1,
+  });
   try {
     res
       .status(200)

@@ -26,6 +26,7 @@ function authenticateToken(req, res, next) {
       });
     }
     req.id = decoded.userId;
+    req.role = decoded.role;
     next();
   });
 }
