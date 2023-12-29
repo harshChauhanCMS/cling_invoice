@@ -1,5 +1,6 @@
 /* eslint-disable no-unneeded-ternary */
 /* eslint-disable max-lines */
+const moment = require('moment');
 const pdf = require('html-pdf-node');
 const { customErrorMessages } = require('../../utils/helpers');
 const sendMail = require('../../utils/sendMail');
@@ -86,7 +87,9 @@ const invoice = async (req, res) => {
           >
             <p></p>
             <div>
-              <div><span>Date: </span> <span>${date}</span></div>
+              <div><span>Date: </span> <span>${moment(date).format(
+                'YYYY-MM-DD'
+              )}</span></div>
               <div><span>Invoice: </span> <span>${invoice_number}</span></div>
               <div><span>${pan_number ? 'PAN' : 'NID'}: </span><span>${
                 pan_number ? pan_number : nid_number

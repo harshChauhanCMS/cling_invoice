@@ -28,7 +28,7 @@
     "firebase-admin": "^11.10.1",
     "html-pdf-node": "^1.0.8",
     "jsonwebtoken": "^9.0.1",
-    "moment": "^2.29.4",
+    "moment": "^2.30.1",
     "mongoose": "^7.2.4",
     "node-cron": "^3.0.2",
     "node-html-to-image": "^4.0.0",
