@@ -42,6 +42,10 @@ const userModel = new mongoose.Schema(
     manager_name: {
       type: String,
     },
+    is_password_reset: {
+      type: Boolean,
+      default: false,
+    },
     role: {
       type: String,
       enum: ['admin', 'user'],
