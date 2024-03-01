@@ -18,7 +18,7 @@ const sendMail = async ({ to, cc, subject, message, attachments }) => {
       secure: true,
       auth: {
         user: 'invoices.clingmultisolutions@gmail.com',
-        pass: 'kantpdawenemolim',
+        pass: 'lnpdnbpropjhxivm',
       },
     });
 
