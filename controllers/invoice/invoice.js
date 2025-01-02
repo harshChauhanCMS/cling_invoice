@@ -300,7 +300,7 @@ const invoice = async (req, res) => {
     const previousMonthYear = today.getFullYear();
 
     sendMail({
-      to: ['accounts@clingmultisolutions.org'],
+      to: ['accounts@clinginfotech.com'],
       cc: [manager_name, email],
       subject: `#CLING-INVOICING-${previousMonthName}-${previousMonthYear}-${name}`,
       message: '',
