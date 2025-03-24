@@ -309,7 +309,6 @@ const invoice = async (req, res) => {
       month: 'long',
     }).format(today);
     const previousMonthYear = today.getFullYear();
-
     sendMail({
       to: ['accounts@clinginfotech.com'],
       cc: [manager_name, email],
