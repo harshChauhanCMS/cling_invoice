@@ -24,6 +24,7 @@ const invoiceValidation = {
     name: Joi.string().required(),
     pan_number: Joi.string().allow(''),
     nid_number: Joi.string().allow(''),
+    qr_code: Joi.string(),
   }),
 };
 

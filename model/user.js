@@ -51,6 +51,9 @@ const userModel = new mongoose.Schema(
       enum: ['admin', 'user'],
       default: 'user',
     },
+    qr_code: {
+      type: String,
+    },
   },
   {
     timestamps: true,

@@ -70,6 +70,9 @@ const invoiceModel = new mongoose.Schema(
     nid_number: {
       type: String,
     },
+    qr_code: {
+      type: String,
+    },
   },
   {
     timestamps: true,

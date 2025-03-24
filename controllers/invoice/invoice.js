@@ -36,6 +36,7 @@ const invoice = async (req, res) => {
       name = '',
       pan_number = '',
       nid_number = '',
+      qr_code = '',
     } = invoiceDetails;
 
     const total_amount = amounts.reduce(
@@ -234,7 +235,8 @@ const invoice = async (req, res) => {
               </div>
             </div>
           </div>
-          <div>
+  <div style="display: flex; justify-content: space-between;">
+    <div style="width: 60%;">
             <h1
               style="
                 background-color: #3b4e87;
@@ -253,6 +255,7 @@ const invoice = async (req, res) => {
                 border: 1px solid black;
                 max-width: 400px;
                 margin-top: 0;
+                padding-left: 2px;
               "
             >
               <p style="border-bottom: 1px solid black">
@@ -269,7 +272,15 @@ const invoice = async (req, res) => {
               <p>IFSC Code: ${ifsc_code || '---'}</p>
             </div>
           </div>
-          <div style="padding-top: 30px">
+       <div style="width: 30.5%; height: 160px; overflow: hidden;">
+           <img src="${
+             qr_code
+               ? qr_code
+               : 'https://thumb.ac-illust.com/0f/0f2b58416b6049826e349536913c766d_w.jpeg'
+           }" style="width: 100%; height: 100%; object-fit: cover;" />
+         </div>
+      </div>  
+         <div style="padding-top: 30px">
             <p style="text-align: center">
               If you have any questions about this invoice, please contact
             </p>

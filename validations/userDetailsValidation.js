@@ -13,6 +13,7 @@ const userDetailsValidation = {
     pan_number: Joi.string().allow(''),
     nid_number: Joi.string().allow(''),
     manager_name: Joi.string(),
+    qr_code: Joi.string(),
   }),
 };
 
