@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const nodemailer = require('nodemailer');
 
 const sendMail = async ({ to, cc, subject, message, attachments }) => {
@@ -5,7 +7,7 @@ const sendMail = async ({ to, cc, subject, message, attachments }) => {
     const mailOptions = {
       from: 'invoices.clingmultisolutions@gmail.com',
       to: to,
-      cc: cc,
+      // cc: cc,
       subject: subject,
       text: message,
       attachments: attachments,
@@ -23,8 +25,10 @@ const sendMail = async ({ to, cc, subject, message, attachments }) => {
     });
 
     const res = await transporter.sendMail(mailOptions);
+    console.log(res);
     return res;
   } catch (error) {
+    console.log(error);
     return false;
   }
 };

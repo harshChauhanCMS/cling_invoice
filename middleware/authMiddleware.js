@@ -10,7 +10,7 @@ function authenticateToken(req, res, next) {
     });
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
+  jwt.verify(token, 'lkjvbkghsadbdcscdscbscnskdcs', async (err, decoded) => {
     if (err) {
       return res.status(403).json({
         success: false,

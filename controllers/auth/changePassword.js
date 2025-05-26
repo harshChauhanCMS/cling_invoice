@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const UserModel = require('../../model/user');
 const { customErrorMessages } = require('../../utils/helpers');
 const authValidation = require('../../validations/authValidation');
@@ -21,10 +21,7 @@ const changePassword = async (req, res) => {
         .json({ success: false, message: 'Invalid credentials' });
     }
 
-    const newHashedPassword = await bcrypt.hash(
-      new_password,
-      Number(process.env.BCRYPT_SALT_ROUNDS)
-    );
+    const newHashedPassword = await bcrypt.hash(new_password, Number(10));
     const updatedUser = await UserModel.findByIdAndUpdate(
       id,
       {

@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const UserModel = require('../../model/user');
 const { customErrorMessages } = require('../../utils/helpers');
 
@@ -6,10 +6,7 @@ const register = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const newPassword = await bcrypt.hash(
-      password,
-      Number(process.env.BCRYPT_SALT_ROUNDS)
-    );
+    const newPassword = await bcrypt.hash(password, Number(10));
 
     const newUser = await UserModel.create({ email, password: newPassword });
 

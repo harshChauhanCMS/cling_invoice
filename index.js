@@ -1,10 +1,14 @@
 /* eslint-disable no-console */
+/* eslint-disable max-len */
+
 const express = require('express');
 const cors = require('cors');
+const serverless = require('serverless-http');
 require('dotenv').config();
 const app = express();
-const port = process.env.PORT || 8000;
-const upload = require('express-fileupload');
+const port = 8000;
+
+// const upload = require('express-fileupload');
 const mongoose = require('mongoose');
 
 // Import routes
@@ -20,14 +24,16 @@ app.use(express.static('public'));
 
 // Middleware
 app.use(cors());
-app.use(upload());
-app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.json({ limit: '50mb' }));
+// app.use(upload());
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(bodyParser.json({ limit: '10mb' }));
 // app.use(express.json());
 
 app.all('/api/v1/*', (req, res, next) => {
   const publicRoutes = ['auth/login', 'auth/register'];
   const path = req.path.split('/v1/')[1];
+  console.log('path', path, req.method);
+
   if (publicRoutes.includes(path)) {
     return next();
   } else {
@@ -55,15 +61,38 @@ app.use((req, res) => {
 });
 
 // Database connection
-async function main() {
+const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.DATABASE_URL);
+    await mongoose.connect(
+      'mongodb+srv://clingInvoiceAdmin:B3yI05PtnEKsz7wB@cluster0.nozpx5i.mongodb.net/cling_invoices?retryWrites=true&w=majority&appName=Cluster0',
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        serverSelectionTimeoutMS: 5000,
+        socketTimeoutMS: 45000,
+        family: 4,
+      }
+    );
     console.log('🛢 Database is connected successfully');
-    app.listen(port, () => {
-      console.log(`Application  listening on port ${port}...`);
-    });
-  } catch (err) {
-    console.log('Failed to connect database', err);
+  } catch (error) {
+    console.error('Database connection error:', error);
+    throw error;
   }
+};
+
+// Connect to database before starting the server
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, async () => {
+    await connectDB();
+    console.log(`Application listening on port ${port}...`);
+  });
 }
-main();
+
+// Export serverless handler
+module.exports.handler = async (event, context) => {
+  // Connect to database before handling the request
+  if (mongoose.connection.readyState === 0) {
+    await connectDB();
+  }
+  return serverless(app)(event, context);
+};

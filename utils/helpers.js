@@ -1,4 +1,5 @@
 exports.customErrorMessages = (error) => {
+  console.log(error);
   if (error.isJoi) {
     if (error.details[0].type === 'any.required') {
       return `${error.details[0].context.label} is required`;

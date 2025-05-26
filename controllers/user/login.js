@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const UserModel = require('../../model/user');
 const { customErrorMessages } = require('../../utils/helpers');
@@ -23,9 +23,13 @@ const login = async (req, res) => {
     }
     const { _id: userId, role } = user;
 
-    const accessToken = jwt.sign({ userId, role }, process.env.JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRES_IN,
-    });
+    const accessToken = jwt.sign(
+      { userId, role },
+      'lkjvbkghsadbdcscdscbscnskdcs',
+      {
+        expiresIn: '7d',
+      }
+    );
 
     return res
       .status(200)

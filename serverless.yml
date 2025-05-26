@@ -1,0 +1,31 @@
+service: cling-invoice
+
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+  memorySize: 1024
+  timeout: 30
+  environment:
+    MONGODB_URI: mongodb+srv://clingInvoiceAdmin:B3yI05PtnEKsz7wB@cluster0.nozpx5i.mongodb.net/cling_invoices
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: any
+          cors: true
+          request:
+            parameters:
+              querystrings:
+                name: false
+            payload: 10MB
+          response:
+            headers:
+              Access-Control-Allow-Origin: "'*'"
+              Access-Control-Allow-Credentials: true
+
+
