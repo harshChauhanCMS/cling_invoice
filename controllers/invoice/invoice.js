@@ -30,7 +30,7 @@ const invoice = async (req, res) => {
       throw new Error('Add manager name to your profile');
     }
 
-    const { name } = invoiceDetails;
+    const { name, email } = invoiceDetails;
 
     // Extract base64 data and convert to Buffer
     const base64Data = pdfData.split('base64,')[1];
@@ -52,8 +52,8 @@ const invoice = async (req, res) => {
     }).format(today);
     const previousMonthYear = today.getFullYear();
     await sendMail({
-      to: ['himanshu.bisht430@gmail.com'],
-      // cc: [manager_name, email],
+      to: ['accounts@clinginfotech.com'],
+      cc: [manager_name, email],
       subject: `#CLING-INVOICING-${previousMonthName}-${previousMonthYear}-${name}`,
       message: '',
       attachments: attachments,

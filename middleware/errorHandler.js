@@ -1,6 +1,6 @@
 function errorHandler(err, req, res, next) {
   // Log the error or perform any additional error handling tasks
-
+  console.log(err, 'skdlasld');
   // Set the appropriate status code and send the error response
   let statusCode = 500;
   let errorMessage = 'Internal Server Error';

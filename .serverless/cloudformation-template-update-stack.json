@@ -91,13 +91,13 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-ap-south-1-c5d0bcb0-32a9",
-          "S3Key": "serverless/cling-invoice/dev/1747744796534-2025-05-20T12:39:56.534Z/cling-invoice.zip"
+          "S3Key": "serverless/cling-invoice/dev/1748839447980-2025-06-02T04:44:07.980Z/cling-invoice.zip"
         },
         "Handler": "index.handler",
         "Runtime": "nodejs18.x",
         "FunctionName": "cling-invoice-dev-api",
         "MemorySize": 1024,
-        "Timeout": 6,
+        "Timeout": 30,
         "Environment": {
           "Variables": {
             "MONGODB_URI": "mongodb+srv://clingInvoiceAdmin:B3yI05PtnEKsz7wB@cluster0.nozpx5i.mongodb.net/cling_invoices"
@@ -114,14 +114,14 @@
         "ApiLogGroup"
       ]
     },
-    "ApiLambdaVersionJHXv1irort972GlmmVlpKUQLCpXGgNzRVGZgwObMSk": {
+    "ApiLambdaVersionp90kUQAMNJ2JLyUlLNIIyZNDX2DPafDt5qzEpnrU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "/zLZK5Y+J7AWel+wfjN1iCs2u3hGAgME8SeVSqmkX+E="
+        "CodeSha256": "D2IxHkxKvb1v/YIluqIM+haX/wVqzRRgqPJeht8Xl9Q="
       }
     },
     "ApiGatewayRestApi": {
@@ -200,7 +200,9 @@
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "ANY",
-        "RequestParameters": {},
+        "RequestParameters": {
+          "method.request.querystring.name": false
+        },
         "ResourceId": {
           "Ref": "ApiGatewayResourceProxyVar"
         },
@@ -242,7 +244,7 @@
         "ApiLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1747744784590": {
+    "ApiGatewayDeployment1748839437585": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -303,7 +305,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersionJHXv1irort972GlmmVlpKUQLCpXGgNzRVGZgwObMSk"
+        "Ref": "ApiLambdaVersionp90kUQAMNJ2JLyUlLNIIyZNDX2DPafDt5qzEpnrU"
       },
       "Export": {
         "Name": "sls-cling-invoice-dev-ApiLambdaFunctionQualifiedArn"

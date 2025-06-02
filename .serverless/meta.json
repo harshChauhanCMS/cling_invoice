@@ -1,6 +1,6 @@
 {
   "/Users/himanshubisht/Documents/repos/cling_invoice/serverless.yml": {
-    "versionFramework": "4.14.3",
+    "versionFramework": "4.15.1",
     "servicePath": "/Users/himanshubisht/Documents/repos/cling_invoice/serverless.yml",
     "serviceConfigFileName": "serverless.yml",
     "service": {
@@ -9,6 +9,8 @@
         "name": "aws",
         "runtime": "nodejs18.x",
         "region": "ap-south-1",
+        "memorySize": 1024,
+        "timeout": 30,
         "environment": {
           "MONGODB_URI": "mongodb+srv://clingInvoiceAdmin:B3yI05PtnEKsz7wB@cluster0.nozpx5i.mongodb.net/cling_invoices"
         },
@@ -107,13 +109,13 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-ap-south-1-c5d0bcb0-32a9",
-                  "S3Key": "serverless/cling-invoice/dev/1747744796534-2025-05-20T12:39:56.534Z/cling-invoice.zip"
+                  "S3Key": "serverless/cling-invoice/dev/1748839447980-2025-06-02T04:44:07.980Z/cling-invoice.zip"
                 },
                 "Handler": "index.handler",
                 "Runtime": "nodejs18.x",
                 "FunctionName": "cling-invoice-dev-api",
                 "MemorySize": 1024,
-                "Timeout": 6,
+                "Timeout": 30,
                 "Environment": {
                   "Variables": {
                     "MONGODB_URI": "mongodb+srv://clingInvoiceAdmin:B3yI05PtnEKsz7wB@cluster0.nozpx5i.mongodb.net/cling_invoices"
@@ -130,14 +132,14 @@
                 "ApiLogGroup"
               ]
             },
-            "ApiLambdaVersionJHXv1irort972GlmmVlpKUQLCpXGgNzRVGZgwObMSk": {
+            "ApiLambdaVersionp90kUQAMNJ2JLyUlLNIIyZNDX2DPafDt5qzEpnrU": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "ApiLambdaFunction"
                 },
-                "CodeSha256": "/zLZK5Y+J7AWel+wfjN1iCs2u3hGAgME8SeVSqmkX+E="
+                "CodeSha256": "D2IxHkxKvb1v/YIluqIM+haX/wVqzRRgqPJeht8Xl9Q="
               }
             },
             "ApiGatewayRestApi": {
@@ -216,7 +218,9 @@
               "Type": "AWS::ApiGateway::Method",
               "Properties": {
                 "HttpMethod": "ANY",
-                "RequestParameters": {},
+                "RequestParameters": {
+                  "method.request.querystring.name": false
+                },
                 "ResourceId": {
                   "Ref": "ApiGatewayResourceProxyVar"
                 },
@@ -258,7 +262,7 @@
                 "ApiLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1747744784590": {
+            "ApiGatewayDeployment1748839437585": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -319,7 +323,7 @@
             "ApiLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "ApiLambdaVersionJHXv1irort972GlmmVlpKUQLCpXGgNzRVGZgwObMSk"
+                "Ref": "ApiLambdaVersionp90kUQAMNJ2JLyUlLNIIyZNDX2DPafDt5qzEpnrU"
               },
               "Export": {
                 "Name": "sls-cling-invoice-dev-ApiLambdaFunctionQualifiedArn"
@@ -380,6 +384,11 @@
                   ],
                   "allowCredentials": "<REDACTED>"
                 },
+                "request": {
+                  "parameters": {
+                    "method.request.querystring.name": false
+                  }
+                },
                 "integration": "AWS_PROXY"
               }
             }
@@ -387,10 +396,10 @@
           "name": "cling-invoice-dev-api",
           "package": {},
           "memory": 1024,
-          "timeout": 6,
+          "timeout": 30,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "ApiLambdaVersionJHXv1irort972GlmmVlpKUQLCpXGgNzRVGZgwObMSk"
+          "versionLogicalId": "ApiLambdaVersionp90kUQAMNJ2JLyUlLNIIyZNDX2DPafDt5qzEpnrU"
         }
       }
     },
@@ -398,6 +407,8 @@
       "name": "aws",
       "runtime": "nodejs18.x",
       "region": "ap-south-1",
+      "memorySize": 1024,
+      "timeout": 30,
       "environment": {
         "MONGODB_URI": "mongodb+srv://clingInvoiceAdmin:B3yI05PtnEKsz7wB@cluster0.nozpx5i.mongodb.net/cling_invoices"
       },
@@ -496,13 +507,13 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-ap-south-1-c5d0bcb0-32a9",
-                "S3Key": "serverless/cling-invoice/dev/1747744796534-2025-05-20T12:39:56.534Z/cling-invoice.zip"
+                "S3Key": "serverless/cling-invoice/dev/1748839447980-2025-06-02T04:44:07.980Z/cling-invoice.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs18.x",
               "FunctionName": "cling-invoice-dev-api",
               "MemorySize": 1024,
-              "Timeout": 6,
+              "Timeout": 30,
               "Environment": {
                 "Variables": {
                   "MONGODB_URI": "mongodb+srv://clingInvoiceAdmin:B3yI05PtnEKsz7wB@cluster0.nozpx5i.mongodb.net/cling_invoices"
@@ -519,14 +530,14 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersionJHXv1irort972GlmmVlpKUQLCpXGgNzRVGZgwObMSk": {
+          "ApiLambdaVersionp90kUQAMNJ2JLyUlLNIIyZNDX2DPafDt5qzEpnrU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "/zLZK5Y+J7AWel+wfjN1iCs2u3hGAgME8SeVSqmkX+E="
+              "CodeSha256": "D2IxHkxKvb1v/YIluqIM+haX/wVqzRRgqPJeht8Xl9Q="
             }
           },
           "ApiGatewayRestApi": {
@@ -605,7 +616,9 @@
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "ANY",
-              "RequestParameters": {},
+              "RequestParameters": {
+                "method.request.querystring.name": false
+              },
               "ResourceId": {
                 "Ref": "ApiGatewayResourceProxyVar"
               },
@@ -647,7 +660,7 @@
               "ApiLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1747744784590": {
+          "ApiGatewayDeployment1748839437585": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -708,7 +721,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersionJHXv1irort972GlmmVlpKUQLCpXGgNzRVGZgwObMSk"
+              "Ref": "ApiLambdaVersionp90kUQAMNJ2JLyUlLNIIyZNDX2DPafDt5qzEpnrU"
             },
             "Export": {
               "Name": "sls-cling-invoice-dev-ApiLambdaFunctionQualifiedArn"
@@ -753,7 +766,7 @@
       "serviceProvider": null,
       "instanceParameters": null
     },
-    "serviceRawFile": "service: cling-invoice\n\n\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: ap-south-1\n  environment:\n    MONGODB_URI: mongodb+srv://clingInvoiceAdmin:B3yI05PtnEKsz7wB@cluster0.nozpx5i.mongodb.net/cling_invoices\n\nfunctions:\n  api:\n    handler: index.handler\n    events:\n      - http:\n          path: /{proxy+}\n          method: any\n          cors: true\n",
+    "serviceRawFile": "service: cling-invoice\n\n\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: ap-south-1\n  memorySize: 1024\n  timeout: 30\n  environment:\n    MONGODB_URI: mongodb+srv://clingInvoiceAdmin:B3yI05PtnEKsz7wB@cluster0.nozpx5i.mongodb.net/cling_invoices\n\nfunctions:\n  api:\n    handler: index.handler\n    events:\n      - http:\n          path: /{proxy+}\n          method: any\n          cors: true\n          request:\n            parameters:\n              querystrings:\n                name: false\n            payload: 40MB\n          response:\n            headers:\n              Access-Control-Allow-Origin: \"'*'\"\n              Access-Control-Allow-Credentials: true\n\n\n",
     "command": [
       "deploy"
     ],
@@ -766,12 +779,12 @@
     "serviceProviderAwsCfStackName": "cling-invoice-dev",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:ap-south-1:994583028550:stack/cling-invoice-dev/383ec190-352e-11f0-a9b9-0617ce91c9f5",
     "serviceProviderAwsCfStackCreated": "2025-05-20T03:55:08.369Z",
-    "serviceProviderAwsCfStackUpdated": "2025-05-20T06:35:36.658Z",
+    "serviceProviderAwsCfStackUpdated": "2025-05-29T06:15:38.716Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "ApiLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:ap-south-1:994583028550:function:cling-invoice-dev-api:10",
+        "OutputValue": "arn:aws:lambda:ap-south-1:994583028550:function:cling-invoice-dev-api:14",
         "Description": "Current Lambda function version",
         "ExportName": "sls-cling-invoice-dev-ApiLambdaFunctionQualifiedArn"
       },
@@ -880,13 +893,13 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-ap-south-1-c5d0bcb0-32a9",
-              "S3Key": "serverless/cling-invoice/dev/1747744796534-2025-05-20T12:39:56.534Z/cling-invoice.zip"
+              "S3Key": "serverless/cling-invoice/dev/1748839447980-2025-06-02T04:44:07.980Z/cling-invoice.zip"
             },
             "Handler": "index.handler",
             "Runtime": "nodejs18.x",
             "FunctionName": "cling-invoice-dev-api",
             "MemorySize": 1024,
-            "Timeout": 6,
+            "Timeout": 30,
             "Environment": {
               "Variables": {
                 "MONGODB_URI": "mongodb+srv://clingInvoiceAdmin:B3yI05PtnEKsz7wB@cluster0.nozpx5i.mongodb.net/cling_invoices"
@@ -903,14 +916,14 @@
             "ApiLogGroup"
           ]
         },
-        "ApiLambdaVersionJHXv1irort972GlmmVlpKUQLCpXGgNzRVGZgwObMSk": {
+        "ApiLambdaVersionp90kUQAMNJ2JLyUlLNIIyZNDX2DPafDt5qzEpnrU": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "ApiLambdaFunction"
             },
-            "CodeSha256": "/zLZK5Y+J7AWel+wfjN1iCs2u3hGAgME8SeVSqmkX+E="
+            "CodeSha256": "D2IxHkxKvb1v/YIluqIM+haX/wVqzRRgqPJeht8Xl9Q="
           }
         },
         "ApiGatewayRestApi": {
@@ -989,7 +1002,9 @@
           "Type": "AWS::ApiGateway::Method",
           "Properties": {
             "HttpMethod": "ANY",
-            "RequestParameters": {},
+            "RequestParameters": {
+              "method.request.querystring.name": false
+            },
             "ResourceId": {
               "Ref": "ApiGatewayResourceProxyVar"
             },
@@ -1031,7 +1046,7 @@
             "ApiLambdaPermissionApiGateway"
           ]
         },
-        "ApiGatewayDeployment1747744784590": {
+        "ApiGatewayDeployment1748839437585": {
           "Type": "AWS::ApiGateway::Deployment",
           "Properties": {
             "RestApiId": {
@@ -1092,7 +1107,7 @@
         "ApiLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "ApiLambdaVersionJHXv1irort972GlmmVlpKUQLCpXGgNzRVGZgwObMSk"
+            "Ref": "ApiLambdaVersionp90kUQAMNJ2JLyUlLNIIyZNDX2DPafDt5qzEpnrU"
           },
           "Export": {
             "Name": "sls-cling-invoice-dev-ApiLambdaFunctionQualifiedArn"

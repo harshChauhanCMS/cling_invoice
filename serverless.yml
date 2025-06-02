@@ -22,7 +22,7 @@ functions:
             parameters:
               querystrings:
                 name: false
-            payload: 10MB
+            payload: 40MB
           response:
             headers:
               Access-Control-Allow-Origin: "'*'"

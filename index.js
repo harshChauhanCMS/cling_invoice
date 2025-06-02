@@ -25,8 +25,8 @@ app.use(express.static('public'));
 // Middleware
 app.use(cors());
 // app.use(upload());
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
-app.use(bodyParser.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+app.use(bodyParser.json({ limit: '50mb' }));
 // app.use(express.json());
 
 app.all('/api/v1/*', (req, res, next) => {
